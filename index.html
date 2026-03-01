@@ -1468,23 +1468,91 @@
       animation: radioPulse 2.2s ease-in-out infinite;
     }
     @media (max-width: 768px) {
+
+      /* Hero: cinematic full-bleed poster layout */
+      #hero { height: 100dvh; min-height: 600px; }
+
       .hero-split {
         grid-template-columns: 1fr;
-        padding: 0 20px;
-        text-align: center;
+        padding: 0;
         gap: 0;
-        align-items: flex-start;
+        min-height: 100dvh;
+        position: relative;
+        align-items: flex-end;
+        text-align: left;
       }
-      .hero-left  { order: 2; padding: 12px 0 40px; }
-      .hero-right { order: 1; padding: calc(var(--nav-h) + 8px) 0 0; }
-      .hero-artist-wrap { max-width: 260px; margin: 0 auto; }
-      .hero-ctas  { justify-content: center; }
-      .hero-data-readout { display: none; }
-      .hero-holo-frame { display: none; }
-      .hero-bracket { display: none; }
+
+      /* Image fills the full hero as background */
+      .hero-right {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        order: 1;
+        pointer-events: none;
+        display: block;
+      }
+      .hero-artist-wrap {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        margin: 0;
+      }
+      .hero-artist-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 8%;
+        animation: heroFadeIn 1.2s var(--ease) 0.8s both;
+      }
+      .hero-artist-halo { display: none; }
+      .hero-holo-frame  { display: none; }
+      .hero-bracket     { display: none; }
+      .hero-scan-lines  { display: none; }
       .hero-scroll-hint { display: none; }
-      .hero-scan-lines { display: none; }
-      .hero-subtitle { margin-top: 10px; }
+
+      /* Text sits at the bottom, overlaid on the image */
+      .hero-left {
+        order: 2;
+        position: relative;
+        z-index: 3;
+        padding: 0 24px 52px;
+        width: 100%;
+        text-align: left;
+        background: linear-gradient(to top,
+          rgba(5,5,5,0.97) 0%,
+          rgba(5,5,5,0.82) 40%,
+          rgba(5,5,5,0.3) 70%,
+          transparent 100%
+        );
+      }
+
+      /* Show data readout above title on mobile */
+      .hero-data-readout {
+        display: flex !important;
+        justify-content: flex-start;
+        margin-top: 0;
+        margin-bottom: 12px;
+        animation: none;
+        opacity: 1;
+      }
+
+      .hero-ctas {
+        justify-content: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-ghost {
+        max-width: none;
+        width: auto;
+        font-size: 0.58rem;
+        padding: 12px 22px;
+      }
+      .hero-subtitle { margin-top: 8px; }
     }
 
     /* ─── LIVE FROM THE COSMOS ───────────────────────────────────── */
@@ -1727,13 +1795,10 @@
       .epk-bio-title { font-size: clamp(1.2rem, 7vw, 1.6rem) !important; }
 
       /* Hero */
-      .hero-split { padding: 0 16px; gap: 0; }
-      .hero-artist-wrap { max-width: 200px; }
-      .hero-right { padding: calc(var(--nav-h) + 4px) 0 0; }
-      .hero-left { padding: 8px 0 32px; }
-      .hero-ctas { margin-top: 20px; gap: 10px; }
+      .hero-left { padding: 0 16px 44px; }
+      .hero-ctas { gap: 10px; margin-top: 16px; }
       .hero-ctas .btn-primary,
-      .hero-ctas .btn-ghost { max-width: 220px; font-size: 0.55rem; padding: 12px 20px; }
+      .hero-ctas .btn-ghost { font-size: 0.55rem; padding: 11px 18px; }
 
       /* Events */
       .event-card { padding: 16px; gap: 10px; }
