@@ -1473,14 +1473,18 @@
         padding: 0 20px;
         text-align: center;
         gap: 0;
+        align-items: flex-start;
       }
-      .hero-left  { order: 2; padding: 20px 0 60px; }
-      .hero-right { order: 1; padding: calc(var(--nav-h) + 10px) 0 0; }
-      .hero-artist-wrap { max-width: 300px; margin: 0 auto; }
+      .hero-left  { order: 2; padding: 12px 0 40px; }
+      .hero-right { order: 1; padding: calc(var(--nav-h) + 8px) 0 0; }
+      .hero-artist-wrap { max-width: 260px; margin: 0 auto; }
       .hero-ctas  { justify-content: center; }
       .hero-data-readout { display: none; }
       .hero-holo-frame { display: none; }
       .hero-bracket { display: none; }
+      .hero-scroll-hint { display: none; }
+      .hero-scan-lines { display: none; }
+      .hero-subtitle { margin-top: 10px; }
     }
 
     /* ─── LIVE FROM THE COSMOS ───────────────────────────────────── */
@@ -1724,9 +1728,12 @@
 
       /* Hero */
       .hero-split { padding: 0 16px; gap: 0; }
-      .hero-artist-wrap { max-width: 220px; }
+      .hero-artist-wrap { max-width: 200px; }
+      .hero-right { padding: calc(var(--nav-h) + 4px) 0 0; }
+      .hero-left { padding: 8px 0 32px; }
+      .hero-ctas { margin-top: 20px; gap: 10px; }
       .hero-ctas .btn-primary,
-      .hero-ctas .btn-ghost { max-width: 240px; }
+      .hero-ctas .btn-ghost { max-width: 220px; font-size: 0.55rem; padding: 12px 20px; }
 
       /* Events */
       .event-card { padding: 16px; gap: 10px; }
@@ -1805,7 +1812,7 @@
 
     <!-- Left: Text -->
     <div class="hero-left">
-      <p class="hero-eyebrow">Dallas, TX &nbsp;·&nbsp; 97.9 The Beat &nbsp;·&nbsp; Oak Cliff</p>
+
       <h1 class="hero-title">
         <span class="glow-text glitch-hover" data-text="SPACEBOIFRESH">SPACEBOIFRESH</span>
       </h1>
