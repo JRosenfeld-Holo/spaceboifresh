@@ -1,0 +1,2942 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPACEBOIFRESH — Out of This World</title>
+  <meta name="description" content="Dallas-based hip-hop artist, audio engineer & 97.9 The Beat radio personality. Stream Dallafornia, For The Low, Planet EX. Book for events & features." />
+  <meta property="og:title" content="SPACEBOIFRESH — Out of This World" />
+  <meta property="og:description" content="Dallas hip-hop artist & 97.9 The Beat radio personality from Oak Cliff." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#050505" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & TOKENS ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:      #050505;
+      --void-2:    #0d0d0d;
+      --void-3:    #141414;
+      --glass:     rgba(255,255,255,0.04);
+      --glass-b:   rgba(255,255,255,0.08);
+      --star:      #F8F9FA;
+      --star-dim:  rgba(248,249,250,0.6);
+      --purple:    #8A2BE2;
+      --purple-dim:rgba(138,43,226,0.25);
+      --purple-glow:rgba(138,43,226,0.55);
+      --orange:    #FF4500;
+      --orange-dim:rgba(255,69,0,0.2);
+      --font-head: 'Syncopate', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --nav-h:     72px;
+      --ease:      cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--void);
+      color: var(--star);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* ─── UTILITY ────────────────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      font-family: var(--font-head);
+      font-size: 0.625rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--purple);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── NAV ─────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    nav.scrolled {
+      background: rgba(5,5,5,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-color: rgba(255,255,255,0.06);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--star);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-logo span { color: var(--purple); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--star); }
+    .btn-ghost {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--star);
+      text-decoration: none;
+      border: 1px solid rgba(248,249,250,0.35);
+      padding: 10px 22px;
+      cursor: pointer;
+      background: transparent;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+      display: inline-block;
+    }
+    .btn-ghost:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 16px var(--purple-glow), inset 0 0 10px rgba(138,43,226,0.08);
+      color: var(--star);
+    }
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--star);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav-mobile-menu {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(5,5,5,0.97);
+      backdrop-filter: blur(20px);
+      padding: 32px 24px;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 99;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .nav-mobile-menu.open { display: flex; }
+    .nav-mobile-menu a {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .nav-mobile-menu a:hover { color: var(--star); }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-links + .btn-ghost { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 640px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #star-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 960px;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-head);
+      font-size: 0.65rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: heroFadeUp 1s var(--ease) 0.3s forwards;
+    }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 9vw, 8rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 0.95;
+      text-transform: uppercase;
+      color: var(--star);
+      opacity: 0;
+      animation: heroFadeUp 1s var(--ease) 0.55s forwards;
+    }
+    .hero-title .glow-text {
+      display: block;
+      text-shadow: 0 0 40px var(--purple-glow), 0 0 80px rgba(138,43,226,0.25);
+    }
+    .hero-subtitle {
+      font-family: var(--font-head);
+      font-size: clamp(0.7rem, 2.5vw, 1.05rem);
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      margin-top: 20px;
+      opacity: 0;
+      animation: heroFadeUp 1s var(--ease) 0.8s forwards;
+    }
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: heroFadeUp 1s var(--ease) 1.05s forwards;
+    }
+    .btn-primary {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--star);
+      text-decoration: none;
+      background: var(--purple);
+      border: 1px solid var(--purple);
+      padding: 14px 32px;
+      cursor: pointer;
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 0 32px var(--purple-glow), 0 0 64px rgba(138,43,226,0.3);
+      transform: translateY(-1px);
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: heroFadeUp 1s var(--ease) 1.5s forwards;
+    }
+    .hero-scroll-hint span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(248,249,250,0.3);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, rgba(138,43,226,0.8), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 1; }
+    }
+
+    /* ─── SECTIONS ───────────────────────────────────────────────── */
+    section { padding: 120px 0; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .section-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(to right, var(--purple), transparent);
+      margin: 20px auto 0;
+    }
+
+    /* ─── DISCOGRAPHY ─────────────────────────────────────────────── */
+    #music { background: var(--void); }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) { .album-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; } }
+    @media (min-width: 600px) and (max-width: 900px) { .album-grid { grid-template-columns: repeat(2, 1fr); max-width: 100%; } }
+
+    .album-card {
+      position: relative;
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), border-color 0.35s ease;
+    }
+    .album-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.6), 0 0 32px var(--purple-dim);
+      border-color: rgba(138,43,226,0.35);
+    }
+    .album-art {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .album-art-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(248,249,250,0.2);
+      transition: opacity 0.35s ease;
+    }
+    .album-card:hover .album-art-bg { opacity: 0.4; }
+
+    /* Album-specific gradients */
+    .art-dallafornia { background: linear-gradient(135deg, #0a0015 0%, #1a0035 40%, #2d0050 70%, #0a001a 100%); }
+    .art-forthelow   { background: linear-gradient(135deg, #050505 0%, #1a0a00 40%, #2d1200 70%, #0a0500 100%); }
+    .art-planetex    { background: linear-gradient(135deg, #000a1a 0%, #001035 40%, #001a50 70%, #00050a 100%); }
+
+    /* Decorative orb on album art */
+    .album-orb {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .orb-purple { background: var(--purple); opacity: 0.35; top: 30%; left: 30%; }
+    .orb-orange { background: var(--orange); opacity: 0.2; top: 40%; left: 40%; }
+    .orb-blue   { background: #0066ff; opacity: 0.3; top: 30%; left: 35%; }
+
+    .album-info {
+      padding: 20px;
+      position: relative;
+    }
+    .album-year {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: var(--purple);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .album-title {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--star);
+      margin-bottom: 6px;
+    }
+    .album-desc {
+      font-size: 0.78rem;
+      color: var(--star-dim);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .stream-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .stream-btn {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 6px 12px;
+      transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .stream-btn:hover {
+      border-color: var(--purple);
+      color: var(--star);
+      box-shadow: 0 0 8px var(--purple-dim);
+    }
+    .stream-btn svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* ─── EVENTS ─────────────────────────────────────────────────── */
+    #events {
+      background: linear-gradient(180deg, var(--void) 0%, var(--void-2) 50%, var(--void) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #events::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(138,43,226,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 20px;
+    }
+    .event-card {
+      background: var(--glass);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .event-card:hover {
+      border-color: rgba(138,43,226,0.3);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 16px var(--purple-dim);
+    }
+    .event-date-badge {
+      flex-shrink: 0;
+      width: 60px;
+      text-align: center;
+      background: var(--purple-dim);
+      border: 1px solid rgba(138,43,226,0.3);
+      padding: 10px 8px;
+    }
+    .event-date-badge .month {
+      display: block;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+    .event-date-badge .day {
+      display: block;
+      font-family: var(--font-head);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--star);
+      line-height: 1;
+      margin-top: 4px;
+    }
+    .event-body { flex: 1; min-width: 0; }
+    .event-tag {
+      font-size: 0.55rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .event-title {
+      font-family: var(--font-head);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--star);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .event-meta {
+      font-size: 0.75rem;
+      color: var(--star-dim);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .event-meta svg { width: 12px; height: 12px; color: var(--purple); flex-shrink: 0; }
+    .event-rsvp {
+      margin-top: 16px;
+    }
+
+    /* ─── RSVP MODAL ─────────────────────────────────────────────── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5,5,5,0.88);
+      backdrop-filter: blur(10px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+    .modal {
+      background: #111;
+      border: 1px solid rgba(255,255,255,0.08);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.35s var(--ease);
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--star-dim);
+      cursor: pointer;
+      font-size: 1.4rem;
+      line-height: 1;
+      padding: 4px;
+      transition: color 0.2s ease;
+    }
+    .modal-close:hover { color: var(--star); }
+    .modal-event-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .modal-title {
+      font-family: var(--font-head);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--star);
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+    .form-field {
+      margin-bottom: 24px;
+    }
+    .form-field label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      margin-bottom: 8px;
+    }
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      color: var(--star);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 8px 0;
+      outline: none;
+      transition: border-color 0.2s ease;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus { border-color: var(--purple); }
+    .form-field textarea { resize: none; height: 80px; }
+    .form-field select option { background: #111; color: var(--star); }
+
+    .btn-submit {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--star);
+      background: var(--purple);
+      border: 1px solid var(--purple);
+      padding: 14px 32px;
+      cursor: pointer;
+      width: 100%;
+      transition: box-shadow 0.25s ease;
+    }
+    .btn-submit:hover { box-shadow: 0 0 24px var(--purple-glow); }
+
+    /* ─── MEDIA HUB ──────────────────────────────────────────────── */
+    #media { background: var(--void-2); }
+
+    .media-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .media-tab {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 10px 18px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .media-tab.active,
+    .media-tab:hover {
+      color: var(--star);
+      border-color: var(--purple);
+      box-shadow: 0 0 12px var(--purple-dim);
+    }
+
+    .media-slider-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .media-slider {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .media-slider::-webkit-scrollbar { display: none; }
+
+    .media-card {
+      flex: 0 0 300px;
+      background: var(--void-3);
+      border: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.3s var(--ease);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+    .media-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(138,43,226,0.25);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.7), 0 0 20px var(--purple-dim);
+    }
+    .media-thumb {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .media-thumb-bg {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .media-thumb-bg svg { width: 48px; height: 48px; opacity: 0.4; transition: opacity 0.2s ease, transform 0.3s var(--ease); }
+    .media-card:hover .media-thumb-bg svg { opacity: 0.8; transform: scale(1.1); }
+
+    /* Thumbnail gradients */
+    .thumb-stagazing { background: linear-gradient(135deg, #0a0015 0%, #1a0535 60%, #0d0020 100%); }
+    .thumb-yobars    { background: linear-gradient(135deg, #100500 0%, #2a1000 60%, #150a00 100%); }
+
+    .play-btn-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .play-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      background: rgba(5,5,5,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .media-card:hover .play-circle {
+      background: var(--purple);
+      border-color: var(--purple);
+      box-shadow: 0 0 20px var(--purple-glow);
+    }
+    .play-circle svg { width: 18px; height: 18px; fill: var(--star); margin-left: 3px; }
+
+    .media-card-info { padding: 16px; }
+    .media-series {
+      font-size: 0.58rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .media-ep-title {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--star);
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .media-guests {
+      font-size: 0.7rem;
+      color: var(--star-dim);
+    }
+
+    .slider-nav {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    .slider-arrow {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      color: var(--star-dim);
+    }
+    .slider-arrow:hover {
+      border-color: var(--purple);
+      box-shadow: 0 0 12px var(--purple-dim);
+      color: var(--star);
+    }
+    .slider-arrow svg { width: 16px; height: 16px; }
+
+    /* ─── EPK / MISSION CONTROL ──────────────────────────────────── */
+    #epk { background: var(--void); }
+
+    .epk-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: flex-start;
+    }
+    @media (max-width: 900px) { .epk-split { grid-template-columns: 1fr; gap: 48px; } }
+
+    .epk-photo-wrap {
+      position: relative;
+      aspect-ratio: 1/1;
+      overflow: hidden;
+      border: 1px solid rgba(138,43,226,0.25);
+      box-shadow: 0 0 40px rgba(138,43,226,0.15), 0 0 80px rgba(0,119,255,0.08);
+    }
+    .epk-photo-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #0d0020 0%, #1a0535 40%, #050010 100%);
+    }
+    .epk-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--void) 0%, transparent 60%);
+    }
+    .epk-photo-label {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      right: 28px;
+    }
+    .epk-photo-name {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--star);
+      line-height: 1.1;
+    }
+    .epk-photo-role {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-top: 6px;
+      display: block;
+    }
+
+    /* Decorative orbs behind photo */
+    .epk-glow {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(138,43,226,0.2) 0%, transparent 70%);
+      top: 20%;
+      left: 10%;
+      pointer-events: none;
+    }
+
+    .epk-right {}
+    .epk-bio-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .epk-bio-text {
+      font-size: 0.9rem;
+      line-height: 1.75;
+      color: rgba(248,249,250,0.75);
+      margin-bottom: 32px;
+    }
+    .epk-bio-text p + p { margin-top: 16px; }
+    .epk-stats {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .epk-stat {}
+    .epk-stat-val {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--star);
+      display: block;
+    }
+    .epk-stat-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-top: 2px;
+      display: block;
+    }
+    .epk-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+      margin-bottom: 40px;
+    }
+    .booking-form-title {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      margin-bottom: 24px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--void);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 60px 0 40px;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 28px;
+    }
+    .footer-logo {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--star);
+    }
+    .footer-logo span { color: var(--purple); }
+    .footer-socials {
+      display: flex;
+      gap: 20px;
+    }
+    .footer-social-link {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--star-dim);
+      text-decoration: none;
+      transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .footer-social-link:hover {
+      border-color: var(--purple);
+      color: var(--star);
+      box-shadow: 0 0 12px var(--purple-dim);
+    }
+    .footer-social-link svg { width: 16px; height: 16px; }
+    .footer-copy {
+      width: 100%;
+      text-align: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(248,249,250,0.2);
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ─── NEBULA ACCENT BAR ──────────────────────────────────────── */
+    .nebula-bar {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--purple) 50%, transparent 100%);
+      opacity: 0.5;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       IMPACT LAYER — CUSTOM CURSOR, GRAIN, MARQUEE, GLITCH, CTA
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* ─── CUSTOM COMET CURSOR ────────────────────────────────────── */
+    @media (pointer: fine) {
+      body { cursor: none; }
+      a, button, [role="button"], [tabindex], .album-card, .event-card, .media-card {
+        cursor: none;
+      }
+    }
+    .cursor-dot {
+      position: fixed;
+      top: 0; left: 0;
+      width: 6px; height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+      mix-blend-mode: difference;
+      will-change: transform;
+    }
+    .cursor-ring {
+      position: fixed;
+      top: 0; left: 0;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(138,43,226,0.7);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.12s var(--ease), width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+      will-change: transform;
+    }
+    .cursor-ring.hovered {
+      width: 54px; height: 54px;
+      border-color: rgba(138,43,226,1);
+      box-shadow: 0 0 16px rgba(138,43,226,0.4);
+    }
+    .cursor-dot.hovered { width: 10px; height: 10px; background: var(--purple); }
+
+    /* ─── FILM GRAIN ─────────────────────────────────────────────── */
+    .grain-overlay {
+      position: fixed;
+      inset: -50%;
+      width: 200%; height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      background-size: 180px 180px;
+      opacity: 0.032;
+      pointer-events: none;
+      z-index: 9997;
+      mix-blend-mode: overlay;
+      animation: grainDrift 0.35s steps(2) infinite;
+    }
+    @keyframes grainDrift {
+      0%   { transform: translate(0, 0); }
+      25%  { transform: translate(-3%, -5%); }
+      50%  { transform: translate(5%, 3%); }
+      75%  { transform: translate(-2%, 7%); }
+      100% { transform: translate(4%, -2%); }
+    }
+    @media (prefers-reduced-motion: reduce) { .grain-overlay { animation: none; } }
+
+    /* ─── SCROLLING MARQUEE ──────────────────────────────────────── */
+    .marquee-strip {
+      overflow: hidden;
+      background: var(--void);
+      border-top:    1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 14px 0;
+      position: relative;
+      z-index: 5;
+    }
+    .marquee-strip.accent {
+      background: var(--purple);
+      border-color: rgba(138,43,226,0.5);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 24s linear infinite;
+      gap: 0;
+    }
+    .marquee-strip:hover .marquee-track { animation-play-state: paused; }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 0 36px;
+      color: rgba(248,249,250,0.45);
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .marquee-item .sep {
+      display: inline-block;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--purple);
+      flex-shrink: 0;
+    }
+    .marquee-strip.accent .marquee-item { color: rgba(248,249,250,0.85); }
+    .marquee-strip.accent .marquee-item .sep { background: rgba(255,255,255,0.5); }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+    }
+
+    /* ─── ENHANCED TYPOGRAPHY ────────────────────────────────────── */
+    .hero-title {
+      font-size: clamp(1.8rem, 4.4vw, 4.6rem) !important;
+      letter-spacing: 0.03em !important;
+      overflow-wrap: normal !important;
+      word-break: keep-all !important;
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 6vw, 5rem) !important;
+      letter-spacing: 0.08em !important;
+    }
+
+    /* ─── SECTION NUMBER WATERMARK ───────────────────────────────── */
+    .section-num {
+      font-family: var(--font-head);
+      font-size: clamp(5rem, 14vw, 10rem);
+      font-weight: 700;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(138,43,226,0.12);
+      position: absolute;
+      top: 60px; right: 24px;
+      letter-spacing: 0.05em;
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+    .section-header { position: relative; }
+
+    /* ─── GLITCH HOVER ON TITLES ─────────────────────────────────── */
+    .glitch-hover {
+      position: relative;
+      display: inline-block;
+    }
+    .glitch-hover::before,
+    .glitch-hover::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .glitch-hover::before {
+      color: #8A2BE2;
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+      transform: translateX(-3px);
+      transition: opacity 0.1s;
+    }
+    .glitch-hover::after {
+      color: #FF4500;
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+      transform: translateX(3px);
+      transition: opacity 0.1s;
+    }
+    .glitch-hover:hover::before { opacity: 0.6; animation: glitchB 0.35s steps(2) 2; }
+    .glitch-hover:hover::after  { opacity: 0.5; animation: glitchA 0.35s steps(2) 2; }
+    @keyframes glitchA {
+      0%, 100% { transform: translateX(3px) skewX(0deg); }
+      50%       { transform: translateX(-3px) skewX(2deg); }
+    }
+    @keyframes glitchB {
+      0%, 100% { transform: translateX(-3px) skewX(0deg); }
+      50%       { transform: translateX(3px) skewX(-2deg); }
+    }
+
+    /* ─── PULSING CTA BUTTON ─────────────────────────────────────── */
+    .btn-primary {
+      position: relative;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: var(--purple);
+      z-index: -1;
+      border-radius: 1px;
+      animation: ctaPulse 2.5s ease-in-out infinite;
+      opacity: 0;
+    }
+    @keyframes ctaPulse {
+      0%, 100% { opacity: 0;   transform: scale(1); }
+      50%       { opacity: 0.3; transform: scale(1.06); }
+    }
+    .btn-primary:hover::before { animation: none; opacity: 0; }
+
+    /* ─── ORBIT RING DECORATION ──────────────────────────────────── */
+    .orbit-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(138,43,226,0.12);
+      pointer-events: none;
+      animation: orbitSpin 18s linear infinite;
+    }
+    .orbit-ring.r1 { width: 500px; height: 500px; top: -100px; right: -150px; animation-duration: 22s; }
+    .orbit-ring.r2 { width: 300px; height: 300px; top: 0; right: -50px; animation-duration: 14s; animation-direction: reverse; border-color: rgba(255,69,0,0.08); }
+    @keyframes orbitSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* ─── PRE-FOOTER CTA SECTION ─────────────────────────────────── */
+    #cta-section {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--void);
+    }
+    .cta-inner {
+      position: relative;
+      padding: 140px 40px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .cta-bg-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw; height: 80vw;
+      max-width: 800px; max-height: 800px;
+      background: radial-gradient(ellipse, rgba(138,43,226,0.12) 0%, rgba(0,119,255,0.06) 40%, transparent 70%);
+      pointer-events: none;
+      animation: ctaBgPulse 5s ease-in-out infinite;
+    }
+    @keyframes ctaBgPulse {
+      0%, 100% { transform: translate(-50%,-50%) scale(1);   opacity: 0.7; }
+      50%       { transform: translate(-50%,-50%) scale(1.15); opacity: 1;   }
+    }
+    .cta-eyebrow {
+      font-family: var(--font-head);
+      font-size: 0.62rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--purple);
+      display: block;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-headline {
+      font-family: var(--font-head);
+      font-size: clamp(2.8rem, 8vw, 7rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--star);
+      line-height: 0.95;
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 0 60px rgba(138,43,226,0.4);
+      margin-bottom: 48px;
+    }
+    .cta-headline em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--star);
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+    .cta-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(138,43,226,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(138,43,226,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+    }
+    @media (max-width: 768px) {
+      .cta-inner { padding: 100px 24px; }
+      .cta-headline { margin-bottom: 36px; }
+      .orbit-ring { display: none; }
+      .section-num { display: none; }
+    }
+
+    /* ─── WAVEFORM ACCENT ────────────────────────────────────────── */
+    .waveform-accent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 32px;
+      margin: 24px auto;
+    }
+    .waveform-accent .bar {
+      width: 3px;
+      background: linear-gradient(to top, var(--purple), rgba(138,43,226,0.3));
+      border-radius: 2px;
+      animation: waveformAnim 1.2s ease-in-out infinite;
+    }
+    @keyframes waveformAnim {
+      0%, 100% { transform: scaleY(0.3); }
+      50%       { transform: scaleY(1); }
+    }
+
+    /* ─── SECTION RADIO / BIO QUOTE ─────────────────────────────── */
+    .radio-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,69,0,0.3);
+      background: rgba(255,69,0,0.06);
+      padding: 8px 16px;
+      margin-bottom: 32px;
+    }
+    .radio-badge .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: radioPulse 1.5s ease-in-out infinite;
+    }
+    .radio-badge span {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    @keyframes radioPulse {
+      0%, 100% { opacity: 0.4; transform: scale(0.8); }
+      50%       { opacity: 1;   transform: scale(1.2); }
+    }
+
+    /* ─── HERO SPLIT LAYOUT ─────────────────────────────────────── */
+    .hero-split {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      min-height: 100vh;
+    }
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: calc(var(--nav-h) + 20px) 0 60px;
+    }
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: calc(var(--nav-h) + 20px) 0 60px;
+    }
+    .hero-artist-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+    }
+    .hero-artist-halo {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 88%; height: 88%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(138,43,226,0.22) 0%, rgba(0,119,255,0.1) 45%, transparent 70%);
+      animation: haloPulse 4s ease-in-out infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+    @keyframes haloPulse {
+      0%, 100% { transform: translate(-50%,-50%) scale(1);    opacity: 0.7; }
+      50%       { transform: translate(-50%,-50%) scale(1.15); opacity: 1;   }
+    }
+    .hero-artist-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      position: relative;
+      z-index: 2;
+      mix-blend-mode: screen;
+      filter: drop-shadow(0 0 28px rgba(138,43,226,0.7))
+              drop-shadow(0 0 56px rgba(0,119,255,0.35))
+              drop-shadow(0 0 4px rgba(248,249,250,0.15));
+      animation: artistFloat 7s ease-in-out infinite, heroFadeIn 1.2s var(--ease) 0.8s both;
+      will-change: transform;
+    }
+    @keyframes artistFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-18px); }
+    }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-scan-lines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.07) 3px,
+        rgba(0,0,0,0.07) 4px
+      );
+      pointer-events: none;
+      z-index: 3;
+    }
+    .hero-holo-frame {
+      position: absolute;
+      inset: -8px;
+      border: 1px solid rgba(138,43,226,0.45);
+      z-index: 3;
+      pointer-events: none;
+      animation: frameFlicker 8s ease-in-out infinite;
+    }
+    .hero-holo-frame::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border: 1px solid rgba(0,119,255,0.18);
+    }
+    @keyframes frameFlicker {
+      0%, 90%, 100% { opacity: 1; }
+      92%           { opacity: 0.4; }
+      94%           { opacity: 1; }
+      96%           { opacity: 0.6; }
+    }
+    .hero-bracket {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .hero-bracket::before,
+    .hero-bracket::after {
+      content: '';
+      position: absolute;
+      background: var(--purple);
+    }
+    .hero-bracket::before { width: 100%; height: 2px; top: 0; left: 0; }
+    .hero-bracket::after  { width: 2px; height: 100%; top: 0; left: 0; }
+    .hero-bracket.tl { top: -12px; left: -12px; }
+    .hero-bracket.tr { top: -12px; right: -12px; transform: scaleX(-1); }
+    .hero-bracket.bl { bottom: -12px; left: -12px; transform: scaleY(-1); }
+    .hero-bracket.br { bottom: -12px; right: -12px; transform: scale(-1); }
+    .hero-data-readout {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: heroFadeIn 1s var(--ease) 1.8s both;
+    }
+    .hero-data-item {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(138,43,226,0.8);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-data-item::before {
+      content: '';
+      display: block;
+      width: 5px; height: 5px;
+      background: var(--purple);
+      border-radius: 50%;
+      animation: radioPulse 2.2s ease-in-out infinite;
+    }
+    @media (max-width: 768px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        text-align: center;
+        gap: 0;
+      }
+      .hero-left  { order: 2; padding: 20px 0 60px; }
+      .hero-right { order: 1; padding: calc(var(--nav-h) + 10px) 0 0; }
+      .hero-artist-wrap { max-width: 300px; margin: 0 auto; }
+      .hero-ctas  { justify-content: center; }
+      .hero-data-readout { display: none; }
+      .hero-holo-frame { display: none; }
+      .hero-bracket { display: none; }
+    }
+
+    /* ─── LIVE FROM THE COSMOS ───────────────────────────────────── */
+    #live {
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--void);
+    }
+    .live-header {
+      padding: 100px 40px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .live-wrap {
+      position: relative;
+    }
+    .live-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 75vh;
+    }
+    .live-panel {
+      position: relative;
+      overflow: hidden;
+      min-height: 500px;
+    }
+    .live-panel-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .live-panel-bg-1 { background: linear-gradient(135deg, #04000f 0%, #0e0025 60%, #04000f 100%); }
+    .live-panel-bg-2 { background: linear-gradient(135deg, #020012 0%, #0a001e 60%, #020012 100%); }
+    .live-panel-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      mix-blend-mode: screen;
+      transition: transform 0.9s var(--ease);
+    }
+    .live-panel:hover .live-panel-img { transform: scale(1.06); }
+    .live-panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top,
+        rgba(5,5,5,0.92) 0%,
+        rgba(5,5,5,0.4) 45%,
+        transparent 100%
+      );
+      z-index: 2;
+    }
+    .live-panel-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 40px;
+      z-index: 3;
+    }
+    .live-panel-tag {
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 8px;
+      display: block;
+    }
+    .live-panel-title {
+      font-family: var(--font-head);
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--star);
+      line-height: 1.1;
+    }
+    .live-panel-divider {
+      width: 28px; height: 1px;
+      background: var(--purple);
+      margin: 12px 0;
+    }
+    .live-panel-desc {
+      font-size: 0.78rem;
+      color: var(--star-dim);
+      line-height: 1.65;
+      max-width: 280px;
+    }
+    .live-center-overlay {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      pointer-events: none;
+      gap: 8px;
+    }
+    .live-vdivider {
+      position: absolute;
+      top: 0; bottom: 0; left: 50%;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(138,43,226,0.6) 20%,
+        rgba(138,43,226,0.6) 80%,
+        transparent 100%
+      );
+      z-index: 7;
+      pointer-events: none;
+    }
+    @media (max-width: 768px) {
+      .live-inner { grid-template-columns: 1fr; }
+      .live-panel { min-height: 400px; }
+      .live-vdivider, .live-center-overlay { display: none; }
+      .live-header { padding: 80px 24px 40px; }
+      .live-panel-content { padding: 24px; }
+    }
+
+    /* ─── EPK REAL PHOTO ─────────────────────────────────────────── */
+    .epk-real-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      mix-blend-mode: screen;
+    }
+
+    /* ─── STARS LAYER (CSS supplement) ──────────────────────────── */
+    .nebula-glow-top {
+      position: absolute;
+      top: -100px;
+      left: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(138,43,226,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .nebula-glow-bot {
+      position: absolute;
+      bottom: -100px;
+      right: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(255,69,0,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ─── STAR GAZING section extra ─────────────────────────────── */
+    .media-intro {
+      font-size: 0.9rem;
+      color: var(--star-dim);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-top: 12px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       MOBILE RESPONSIVE
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* ── 768px breakpoint ─────────────────────────────────────── */
+    @media (max-width: 768px) {
+
+      /* Section spacing */
+      section { padding: 64px 0; }
+      .section-header { margin-bottom: 40px; }
+      .section-title { font-size: clamp(1.5rem, 9vw, 2.6rem) !important; letter-spacing: 0.05em !important; }
+
+      /* Events — force single column so minmax(340px) doesn't overflow */
+      .events-grid { grid-template-columns: 1fr; }
+      .event-card { padding: 20px; gap: 14px; }
+
+      /* Modal */
+      .modal { padding: 28px 20px; max-height: 90vh; overflow-y: auto; }
+
+      /* Hero CTAs — stack vertically */
+      .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-ghost {
+        width: 100%;
+        max-width: 280px;
+        text-align: center;
+      }
+
+      /* Pre-footer CTA buttons — stack */
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .cta-buttons .btn-primary,
+      .cta-buttons .btn-ghost {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+
+      /* Footer — center everything */
+      .footer-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      .footer-socials { justify-content: center; }
+      .footer-copy { margin-top: 24px; padding-top: 20px; }
+
+      /* Media hub */
+      .media-card { flex: 0 0 260px; }
+      .slider-nav { justify-content: center; }
+      .media-intro { max-width: 100%; }
+
+      /* EPK */
+      .epk-photo-name { font-size: 1rem; }
+      .epk-stats { gap: 20px; }
+
+      /* Live section panels */
+      .live-panel { min-height: 340px; }
+    }
+
+    /* ── 480px breakpoint ─────────────────────────────────────── */
+    @media (max-width: 480px) {
+
+      section { padding: 48px 0; }
+      .container { padding: 0 16px; }
+
+      /* Typography */
+      .section-title { font-size: clamp(1.3rem, 10vw, 2rem) !important; }
+      .cta-headline { font-size: clamp(1.8rem, 11vw, 3.2rem) !important; }
+      .cta-inner { padding: 70px 16px !important; }
+      .epk-bio-title { font-size: clamp(1.2rem, 7vw, 1.6rem) !important; }
+
+      /* Hero */
+      .hero-split { padding: 0 16px; gap: 0; }
+      .hero-artist-wrap { max-width: 220px; }
+      .hero-ctas .btn-primary,
+      .hero-ctas .btn-ghost { max-width: 240px; }
+
+      /* Events */
+      .event-card { padding: 16px; gap: 10px; }
+      .event-date-badge { width: 52px; }
+      .event-date-badge .day { font-size: 1.3rem; }
+
+      /* Modal */
+      .modal { padding: 20px 16px; }
+      .modal-title { font-size: 0.75rem !important; }
+
+      /* Albums */
+      .album-grid { max-width: 100%; }
+
+      /* Media */
+      .media-card { flex: 0 0 220px; }
+
+      /* EPK */
+      .epk-split { gap: 32px; }
+      .epk-right { padding: 0; }
+
+      /* Footer */
+      .footer-inner { gap: 20px; }
+
+      /* Live */
+      .live-panel { min-height: 280px; }
+      .live-header { padding: 60px 16px 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<!-- Film grain -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">SPACE<span>BOI</span>FRESH</a>
+    <ul class="nav-links">
+      <li><a href="#music">Music</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#live">Live</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#epk">EPK</a></li>
+      <li><a href="#epk">Contact</a></li>
+    </ul>
+    <a href="https://www.mukonii.com/spaceboifresh" class="btn-ghost" style="margin-left:36px;" target="_blank" rel="noopener noreferrer">Book Now</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#music" class="mobile-nav-link">Music</a>
+  <a href="#events" class="mobile-nav-link">Events</a>
+  <a href="#live" class="mobile-nav-link">Live</a>
+  <a href="#media" class="mobile-nav-link">Media</a>
+  <a href="#epk" class="mobile-nav-link">EPK</a>
+  <a href="#epk" class="mobile-nav-link">Contact</a>
+  <a href="https://www.mukonii.com/spaceboifresh" class="btn-ghost" style="width:fit-content;" target="_blank" rel="noopener noreferrer">Book Now</a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section id="hero" aria-label="Hero">
+  <canvas id="star-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-split">
+
+    <!-- Left: Text -->
+    <div class="hero-left">
+      <p class="hero-eyebrow">Dallas, TX &nbsp;·&nbsp; 97.9 The Beat &nbsp;·&nbsp; Oak Cliff</p>
+      <h1 class="hero-title">
+        <span class="glow-text glitch-hover" data-text="SPACEBOIFRESH">SPACEBOIFRESH</span>
+      </h1>
+      <p class="hero-subtitle">Out &nbsp;of &nbsp;This &nbsp;World</p>
+      <div class="hero-ctas">
+        <a href="https://open.spotify.com/artist/62SKs6Q8OvB0kIKCpiXgP7" class="btn-primary" target="_blank" rel="noopener noreferrer">Stream Now</a>
+        <a href="#events" class="btn-ghost" style="padding:14px 32px;">Events &nbsp;→</a>
+      </div>
+    </div>
+
+    <!-- Right: Artist Image -->
+    <div class="hero-right">
+      <div class="hero-artist-wrap" id="heroArtistWrap">
+        <div class="hero-artist-halo" aria-hidden="true"></div>
+        <img
+          src="web-images/spaceboi_pro_4_1772404156552.png"
+          alt="Spaceboifresh at the mission control console — Dallas hip-hop artist, audio engineer and 97.9 The Beat radio personality"
+          class="hero-artist-img"
+          id="heroArtistImg"
+          loading="eager"
+          width="640" height="640"
+        />
+        <div class="hero-scan-lines" aria-hidden="true"></div>
+        <div class="hero-holo-frame" aria-hidden="true"></div>
+        <div class="hero-bracket tl" aria-hidden="true"></div>
+        <div class="hero-bracket tr" aria-hidden="true"></div>
+        <div class="hero-bracket bl" aria-hidden="true"></div>
+        <div class="hero-bracket br" aria-hidden="true"></div>
+        <div class="hero-data-readout" aria-hidden="true">
+          <span class="hero-data-item">OAK CLIFF TX</span>
+          <span class="hero-data-item">97.9 THE BEAT</span>
+          <span class="hero-data-item">CEDAR VALLEY</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- Marquee: post-hero -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Spaceboifresh <span class="sep"></span> Out Of This World <span class="sep"></span> Dallas TX <span class="sep"></span> 97.9 The Beat <span class="sep"></span> Oak Cliff <span class="sep"></span> Dallafornia <span class="sep"></span> For The Low <span class="sep"></span> Planet EX <span class="sep"></span> Cedar Valley <span class="sep"></span> Star Gazing <span class="sep"></span> YO BARS! <span class="sep"></span></span>
+    <span class="marquee-item" aria-hidden="true">Spaceboifresh <span class="sep"></span> Out Of This World <span class="sep"></span> Dallas TX <span class="sep"></span> 97.9 The Beat <span class="sep"></span> Oak Cliff <span class="sep"></span> Dallafornia <span class="sep"></span> For The Low <span class="sep"></span> Planet EX <span class="sep"></span> Cedar Valley <span class="sep"></span> Star Gazing <span class="sep"></span> YO BARS! <span class="sep"></span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     DISCOGRAPHY — THE CONSOLE
+════════════════════════════════════════════════════════════ -->
+<section id="music" aria-labelledby="music-title">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-num" aria-hidden="true">01</span>
+      <span class="section-label">Discography</span>
+      <h2 class="section-title glitch-hover" id="music-title" data-text="The Console">The Console</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="album-grid">
+
+      <!-- Dallafornia -->
+      <article class="album-card fade-up" aria-label="Dallafornia album">
+        <div class="album-art">
+          <div class="album-art-bg art-dallafornia">
+            <div class="album-orb orb-purple"></div>
+            <span>DALLAFORNIA</span>
+          </div>
+          <!-- Minimal geometric art element -->
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.15;" viewBox="0 0 400 400" aria-hidden="true">
+            <circle cx="200" cy="200" r="160" fill="none" stroke="#8A2BE2" stroke-width="0.5"/>
+            <circle cx="200" cy="200" r="100" fill="none" stroke="#8A2BE2" stroke-width="0.5"/>
+            <circle cx="200" cy="200" r="50" fill="none" stroke="#FF4500" stroke-width="0.5"/>
+            <line x1="0" y1="200" x2="400" y2="200" stroke="#8A2BE2" stroke-width="0.3"/>
+            <line x1="200" y1="0" x2="200" y2="400" stroke="#8A2BE2" stroke-width="0.3"/>
+            <polygon points="200,60 260,180 140,180" fill="rgba(138,43,226,0.1)" stroke="#8A2BE2" stroke-width="0.5"/>
+          </svg>
+        </div>
+        <div class="album-info">
+          <span class="album-year">2021</span>
+          <h3 class="album-title">Dallafornia</h3>
+          <p class="album-desc">Where the 214 meets the West Coast. Sun-soaked bounce with Oak Cliff grit — Spaceboifresh's breakout statement.</p>
+          <div class="stream-links">
+            <a href="https://open.spotify.com/album/4tjeZb1sov81Mk19OGAiP6" class="stream-btn" aria-label="Stream Dallafornia on Spotify" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://music.apple.com/us/playlist/yo-space-jamz-v2/pl.u-NpXm9Y3IjJNgpg" class="stream-btn" aria-label="Stream Spaceboifresh on Apple Music" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208A7.497 7.497 0 0 0 .09 5.08a63.28 63.28 0 0 0-.014 1.498v11.92c0 .11.003.22.009.329.025.952.157 1.874.518 2.748.41.985 1.056 1.748 1.953 2.288.72.432 1.51.648 2.327.741.56.061 1.12.084 1.683.088h11.56c.186 0 .37-.002.557-.011.905-.036 1.785-.173 2.613-.55 1.254-.574 2.087-1.51 2.554-2.8.285-.784.392-1.6.397-2.43.004-.43.01-.863.01-1.292V7.514c0-.46-.006-.923-.013-1.39zM12 17.77a5.77 5.77 0 1 1 0-11.54 5.77 5.77 0 0 1 0 11.54zm0-9.54a3.77 3.77 0 1 0 0 7.54 3.77 3.77 0 0 0 0-7.54zm5.77-3.77a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7z"/></svg>
+              Apple
+            </a>
+            <a href="https://soundcloud.com/spaceboifresh/sets/dallafornia" class="stream-btn" aria-label="Stream Dallafornia on SoundCloud" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.175 12.225c-.015 0-.03.002-.044.006C.5 12.346 0 12.93 0 13.625c0 .71.507 1.296 1.175 1.394v.006h21.65v-.006c.668-.098 1.175-.684 1.175-1.394s-.507-1.296-1.175-1.394v-.006a2.97 2.97 0 0 0-1.35.27 4.608 4.608 0 0 0-.3-1.665 3.978 3.978 0 0 0-3.9-2.64 4.014 4.014 0 0 0-2.34.75 6.126 6.126 0 0 0-5.61-3.66 6.12 6.12 0 0 0-6.12 6.12c0 .03 0 .06.002.09a2.88 2.88 0 0 0-.832-.135z"/></svg>
+              SoundCloud
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- For The Low -->
+      <article class="album-card fade-up" style="transition-delay:0.1s" aria-label="For The Low album">
+        <div class="album-art">
+          <div class="album-art-bg art-forthelow">
+            <div class="album-orb orb-orange"></div>
+            <span>FOR THE LOW</span>
+          </div>
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.12;" viewBox="0 0 400 400" aria-hidden="true">
+            <rect x="80" y="80" width="240" height="240" fill="none" stroke="#FF4500" stroke-width="0.5"/>
+            <rect x="120" y="120" width="160" height="160" fill="none" stroke="#FF4500" stroke-width="0.5" transform="rotate(15 200 200)"/>
+            <rect x="160" y="160" width="80" height="80" fill="rgba(255,69,0,0.08)" stroke="#FF4500" stroke-width="0.5" transform="rotate(30 200 200)"/>
+            <circle cx="200" cy="200" r="4" fill="#FF4500"/>
+          </svg>
+        </div>
+        <div class="album-info">
+          <span class="album-year">2020</span>
+          <h3 class="album-title">For The Low</h3>
+          <p class="album-desc">Hard-hitting DFW rap with zero pretense. Produced for the streets, delivered from the heart of Oak Cliff.</p>
+          <div class="stream-links">
+            <a href="https://open.spotify.com/album/63pOQAnp0ExZwD4TPAC881" class="stream-btn" aria-label="Stream For The Low on Spotify" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://music.apple.com/us/playlist/yo-space-jamz-v2/pl.u-NpXm9Y3IjJNgpg" class="stream-btn" aria-label="Stream Spaceboifresh on Apple Music" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208A7.497 7.497 0 0 0 .09 5.08a63.28 63.28 0 0 0-.014 1.498v11.92c0 .11.003.22.009.329.025.952.157 1.874.518 2.748.41.985 1.056 1.748 1.953 2.288.72.432 1.51.648 2.327.741.56.061 1.12.084 1.683.088h11.56c.186 0 .37-.002.557-.011.905-.036 1.785-.173 2.613-.55 1.254-.574 2.087-1.51 2.554-2.8.285-.784.392-1.6.397-2.43.004-.43.01-.863.01-1.292V7.514c0-.46-.006-.923-.013-1.39zM12 17.77a5.77 5.77 0 1 1 0-11.54 5.77 5.77 0 0 1 0 11.54zm0-9.54a3.77 3.77 0 1 0 0 7.54 3.77 3.77 0 0 0 0-7.54zm5.77-3.77a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7z"/></svg>
+              Apple
+            </a>
+            <a href="https://soundcloud.com/spaceboifresh" class="stream-btn" aria-label="Stream Spaceboifresh on SoundCloud" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.175 12.225c-.015 0-.03.002-.044.006C.5 12.346 0 12.93 0 13.625c0 .71.507 1.296 1.175 1.394v.006h21.65v-.006c.668-.098 1.175-.684 1.175-1.394s-.507-1.296-1.175-1.394v-.006a2.97 2.97 0 0 0-1.35.27 4.608 4.608 0 0 0-.3-1.665 3.978 3.978 0 0 0-3.9-2.64 4.014 4.014 0 0 0-2.34.75 6.126 6.126 0 0 0-5.61-3.66 6.12 6.12 0 0 0-6.12 6.12c0 .03 0 .06.002.09a2.88 2.88 0 0 0-.832-.135z"/></svg>
+              SoundCloud
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Planet EX -->
+      <article class="album-card fade-up" style="transition-delay:0.2s" aria-label="Planet EX album">
+        <div class="album-art">
+          <div class="album-art-bg art-planetex">
+            <div class="album-orb orb-blue"></div>
+            <span>PLANET EX</span>
+          </div>
+          <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:0.13;" viewBox="0 0 400 400" aria-hidden="true">
+            <ellipse cx="200" cy="200" rx="180" ry="80" fill="none" stroke="#0066ff" stroke-width="0.5" transform="rotate(-20 200 200)"/>
+            <ellipse cx="200" cy="200" rx="140" ry="60" fill="none" stroke="#4499ff" stroke-width="0.5" transform="rotate(-20 200 200)"/>
+            <circle cx="200" cy="200" r="40" fill="rgba(0,102,255,0.1)" stroke="#0066ff" stroke-width="0.8"/>
+            <circle cx="200" cy="200" r="10" fill="#0066ff" opacity="0.4"/>
+            <circle cx="320" cy="140" r="5" fill="rgba(0,102,255,0.5)"/>
+          </svg>
+        </div>
+        <div class="album-info">
+          <span class="album-year">2022</span>
+          <h3 class="album-title">Planet EX</h3>
+          <p class="album-desc">Uncharted sonic territory. Spaceboifresh ventures beyond the atmosphere with his most experimental and immersive project.</p>
+          <div class="stream-links">
+            <a href="https://open.spotify.com/artist/62SKs6Q8OvB0kIKCpiXgP7" class="stream-btn" aria-label="Stream Spaceboifresh on Spotify" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+              Spotify
+            </a>
+            <a href="https://music.apple.com/us/playlist/yo-space-jamz-v2/pl.u-NpXm9Y3IjJNgpg" class="stream-btn" aria-label="Stream Spaceboifresh on Apple Music" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208A7.497 7.497 0 0 0 .09 5.08a63.28 63.28 0 0 0-.014 1.498v11.92c0 .11.003.22.009.329.025.952.157 1.874.518 2.748.41.985 1.056 1.748 1.953 2.288.72.432 1.51.648 2.327.741.56.061 1.12.084 1.683.088h11.56c.186 0 .37-.002.557-.011.905-.036 1.785-.173 2.613-.55 1.254-.574 2.087-1.51 2.554-2.8.285-.784.392-1.6.397-2.43.004-.43.01-.863.01-1.292V7.514c0-.46-.006-.923-.013-1.39zM12 17.77a5.77 5.77 0 1 1 0-11.54 5.77 5.77 0 0 1 0 11.54zm0-9.54a3.77 3.77 0 1 0 0 7.54 3.77 3.77 0 0 0 0-7.54zm5.77-3.77a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7z"/></svg>
+              Apple
+            </a>
+            <a href="https://soundcloud.com/spaceboifresh/planet-ex-prod-by-memory12" class="stream-btn" aria-label="Stream Planet EX on SoundCloud" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.175 12.225c-.015 0-.03.002-.044.006C.5 12.346 0 12.93 0 13.625c0 .71.507 1.296 1.175 1.394v.006h21.65v-.006c.668-.098 1.175-.684 1.175-1.394s-.507-1.296-1.175-1.394v-.006a2.97 2.97 0 0 0-1.35.27 4.608 4.608 0 0 0-.3-1.665 3.978 3.978 0 0 0-3.9-2.64 4.014 4.014 0 0 0-2.34.75 6.126 6.126 0 0 0-5.61-3.66 6.12 6.12 0 0 0-6.12 6.12c0 .03 0 .06.002.09a2.88 2.88 0 0 0-.832-.135z"/></svg>
+              SoundCloud
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="nebula-bar"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     EVENTS — THE ORBIT
+════════════════════════════════════════════════════════════ -->
+<section id="events" aria-labelledby="events-title">
+  <div class="container">
+    <div class="orbit-ring r1" aria-hidden="true"></div>
+    <div class="orbit-ring r2" aria-hidden="true"></div>
+    <div class="section-header fade-up">
+      <span class="section-num" aria-hidden="true">02</span>
+      <span class="section-label">Live &amp; In-Person</span>
+      <h2 class="section-title glitch-hover" id="events-title" data-text="The Orbit">The Orbit</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="events-grid">
+
+      <div class="event-card fade-up"
+           role="button"
+           tabindex="0"
+           aria-label="RSVP for Got It Or Not It Open Mic"
+           onclick="openModal('goini')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openModal('goini')">
+        <div class="event-date-badge">
+          <span class="month">Mar</span>
+          <span class="day">28</span>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Monthly &mdash; Open Mic</span>
+          <h3 class="event-title">Got It Or Not It?</h3>
+          <p class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Nines Bar &amp; Lounge &nbsp;&middot;&nbsp; Dallas, TX
+          </p>
+          <p class="event-meta" style="margin-top:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Doors 8PM &nbsp;&middot;&nbsp; Open Mic 9PM
+          </p>
+          <div class="event-rsvp">
+            <button class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('goini')" aria-label="RSVP for Got It Or Not It">RSVP / Sign Up</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card fade-up" style="transition-delay:0.1s"
+           role="button"
+           tabindex="0"
+           aria-label="Get tickets for All Pink Party NYE Mansion Soiree"
+           onclick="window.open('https://events.eventnoire.com/promoter/675f6ceb-9c0c-4adf-bda8-17b90ad1e02c','_blank','noopener,noreferrer')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')window.open('https://events.eventnoire.com/promoter/675f6ceb-9c0c-4adf-bda8-17b90ad1e02c','_blank','noopener,noreferrer')">
+        <div class="event-date-badge">
+          <span class="month">Dec</span>
+          <span class="day">31</span>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Annual &mdash; NYE Soiree</span>
+          <h3 class="event-title">All Pink Party &mdash; NYE Mansion Soiree</h3>
+          <p class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Private Venue &nbsp;&middot;&nbsp; Dallas, TX
+          </p>
+          <p class="event-meta" style="margin-top:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            9PM &mdash; 3AM &nbsp;&middot;&nbsp; Dress Code: All Pink
+          </p>
+          <div class="event-rsvp">
+            <a href="https://events.eventnoire.com/promoter/675f6ceb-9c0c-4adf-bda8-17b90ad1e02c" class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;display:inline-block;" target="_blank" rel="noopener noreferrer" aria-label="Get tickets for NYE Soiree on EventNoire">Get Tickets</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card fade-up" style="transition-delay:0.2s"
+           role="button"
+           tabindex="0"
+           aria-label="More info about Tacos and Beats Festival"
+           onclick="openModal('tacos')"
+           onkeydown="if(event.key==='Enter'||event.key===' ')openModal('tacos')">
+        <div class="event-date-badge">
+          <span class="month">Apr</span>
+          <span class="day">19</span>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Festival &mdash; Live Performance</span>
+          <h3 class="event-title">Tacos &amp; Beats Festival 2025</h3>
+          <p class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Deep Ellum &nbsp;&middot;&nbsp; Dallas, TX
+          </p>
+          <p class="event-meta" style="margin-top:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            2PM &mdash; 10PM &nbsp;&middot;&nbsp; All Ages
+          </p>
+          <div class="event-rsvp">
+            <button class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('tacos')" aria-label="Get tickets for Tacos and Beats">Get Tickets</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- RSVP MODAL -->
+<div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close modal">&times;</button>
+    <span class="modal-event-label" id="modal-event-label">Open Mic &mdash; March 28</span>
+    <h3 class="modal-title" id="modal-title">Got It Or Not It?</h3>
+    <form onsubmit="handleRsvp(event)" novalidate>
+      <div class="form-field">
+        <label for="rsvp-name">Full Name</label>
+        <input type="text" id="rsvp-name" name="name" required autocomplete="name" placeholder="Your name" />
+      </div>
+      <div class="form-field">
+        <label for="rsvp-email">Email Address</label>
+        <input type="email" id="rsvp-email" name="email" required autocomplete="email" placeholder="your@email.com" />
+      </div>
+      <div class="form-field">
+        <label for="rsvp-phone">Phone (Optional)</label>
+        <input type="tel" id="rsvp-phone" name="phone" autocomplete="tel" placeholder="214-000-0000" />
+      </div>
+      <div class="form-field" id="modal-extra-field">
+        <label for="rsvp-type">I want to...</label>
+        <select id="rsvp-type" name="type">
+          <option value="perform">Perform on the Open Mic</option>
+          <option value="attend">Attend &amp; Watch</option>
+          <option value="both">Both — Perform &amp; Attend</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-submit">Secure My Spot</button>
+    </form>
+  </div>
+</div>
+
+<!-- Marquee: accent strip -->
+<div class="marquee-strip accent" aria-hidden="true">
+  <div class="marquee-track" style="animation-direction:reverse;animation-duration:18s;">
+    <span class="marquee-item">Book Now <span class="sep"></span> Got It Or Not It? <span class="sep"></span> Nines Bar &amp; Lounge <span class="sep"></span> Tacos &amp; Beats <span class="sep"></span> NYE Mansion Soiree <span class="sep"></span> Deep Ellum <span class="sep"></span> Live Performance <span class="sep"></span> Open Mic <span class="sep"></span></span>
+    <span class="marquee-item" aria-hidden="true">Book Now <span class="sep"></span> Got It Or Not It? <span class="sep"></span> Nines Bar &amp; Lounge <span class="sep"></span> Tacos &amp; Beats <span class="sep"></span> NYE Mansion Soiree <span class="sep"></span> Deep Ellum <span class="sep"></span> Live Performance <span class="sep"></span> Open Mic <span class="sep"></span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     LIVE FROM THE COSMOS
+════════════════════════════════════════════════════════════ -->
+<section id="live" aria-labelledby="live-title">
+
+  <div class="live-header fade-up">
+    <span class="section-label">Live &amp; In Performance</span>
+    <h2 class="section-title glitch-hover" id="live-title" data-text="Live From The Cosmos">Live From The Cosmos</h2>
+    <div class="section-divider" style="margin:20px 0 0;"></div>
+  </div>
+
+  <div class="live-wrap">
+    <div class="live-inner">
+
+      <div class="live-panel fade-up">
+        <div class="live-panel-bg live-panel-bg-1"></div>
+        <img
+          src="web-images/spaceboi_pro_1_1772404117736.png"
+          alt="Spaceboifresh performing live at a festival — neon galaxy stage backdrop"
+          class="live-panel-img"
+          loading="lazy" width="640" height="640"
+        />
+        <div class="live-panel-overlay"></div>
+        <div class="live-panel-content">
+          <span class="live-panel-tag">Festival Stage</span>
+          <h3 class="live-panel-title">Tacos &amp; Beats</h3>
+          <div class="live-panel-divider"></div>
+          <p class="live-panel-desc">Deep Ellum, Dallas. Where the universe touches the pavement and Spaceboifresh commands every frequency in the room.</p>
+        </div>
+      </div>
+
+      <div class="live-panel fade-up" style="transition-delay:0.15s">
+        <div class="live-panel-bg live-panel-bg-2"></div>
+        <img
+          src="web-images/spaceboi_pro_2_1772404135426.png"
+          alt="Spaceboifresh on stage with microphone — massive crowd, cosmic light show"
+          class="live-panel-img"
+          loading="lazy" width="640" height="640"
+        />
+        <div class="live-panel-overlay"></div>
+        <div class="live-panel-content">
+          <span class="live-panel-tag">Live Set</span>
+          <h3 class="live-panel-title">Out of This World</h3>
+          <div class="live-panel-divider"></div>
+          <p class="live-panel-desc">Every performance is a transmission from another dimension. The energy doesn't stop until the whole crowd is in orbit.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Vertical divider + center badge -->
+    <div class="live-vdivider" aria-hidden="true"></div>
+    <div class="live-center-overlay" aria-hidden="true">
+      <span style="font-family:var(--font-head);font-size:clamp(1.6rem,4vw,3.2rem);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--star);text-shadow:0 0 32px rgba(138,43,226,0.9),0 0 64px rgba(138,43,226,0.4);white-space:nowrap;">LIVE</span>
+      <span style="font-size:0.55rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--purple);white-space:nowrap;">In Your Orbit</span>
+    </div>
+  </div>
+
+</section>
+
+<div class="nebula-bar"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     MEDIA HUB — STAR GAZING
+════════════════════════════════════════════════════════════ -->
+<section id="media" aria-labelledby="media-title">
+  <div class="container">
+    <div class="section-header fade-up" style="text-align:left;margin-bottom:40px;">
+      <span class="section-num" style="right:24px;" aria-hidden="true">03</span>
+      <span class="section-label">Interviews &amp; Freestyles</span>
+      <h2 class="section-title glitch-hover" id="media-title" data-text="Star Gazing">Star Gazing</h2>
+      <div class="section-divider" style="margin:20px 0 0;"></div>
+      <p class="media-intro">Spaceboifresh behind the mic — long-form artist interviews, the YO BARS! freestyle series, and raw moments from the DFW scene.</p>
+    </div>
+
+    <div class="media-tabs fade-up" role="tablist">
+      <button class="media-tab active" role="tab" aria-selected="true" onclick="filterMedia(this,'all')" data-filter="all">All Content</button>
+      <button class="media-tab" role="tab" aria-selected="false" onclick="filterMedia(this,'interview')" data-filter="interview">Star Gazing Interviews</button>
+      <button class="media-tab" role="tab" aria-selected="false" onclick="filterMedia(this,'bars')" data-filter="bars">YO BARS! Freestyles</button>
+    </div>
+
+    <div class="media-slider-wrap fade-up">
+      <div class="media-slider" id="mediaSlider" role="list">
+
+        <article class="media-card" data-category="interview" role="listitem" aria-label="Star Gazing: Ken Hunned Interview" onclick="window.open('https://thebeatdfw.com/4520141/star-gazing-with-spaceboifresh-2/','_blank','noopener,noreferrer')" style="cursor:pointer;" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://thebeatdfw.com/4520141/star-gazing-with-spaceboifresh-2/','_blank','noopener,noreferrer')">
+          <div class="media-thumb">
+            <div class="media-thumb-bg thumb-stagazing">
+              <svg viewBox="0 0 100 60" aria-hidden="true">
+                <rect width="100" height="60" fill="none"/>
+                <circle cx="50" cy="20" r="10" fill="rgba(138,43,226,0.3)" stroke="#8A2BE2" stroke-width="0.5"/>
+                <line x1="0" y1="40" x2="100" y2="40" stroke="rgba(138,43,226,0.2)" stroke-width="0.3"/>
+                <text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(248,249,250,0.2)" letter-spacing="2">STAR GAZING</text>
+              </svg>
+            </div>
+            <div class="play-btn-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="media-card-info">
+            <span class="media-series">Star Gazing Ep. 07</span>
+            <h3 class="media-ep-title">Ken Hunned — Pressure Makes Diamonds</h3>
+            <p class="media-guests">ft. Ken Hunned &nbsp;·&nbsp; 34 min</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="interview" role="listitem" aria-label="Star Gazing: Daya The Model Interview" onclick="window.open('https://thebeatdfw.com/4519994/star-gazing-with-spaceboifresh/','_blank','noopener,noreferrer')" style="cursor:pointer;" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://thebeatdfw.com/4519994/star-gazing-with-spaceboifresh/','_blank','noopener,noreferrer')">
+          <div class="media-thumb">
+            <div class="media-thumb-bg thumb-stagazing">
+              <svg viewBox="0 0 100 60" aria-hidden="true">
+                <circle cx="30" cy="30" r="18" fill="none" stroke="rgba(138,43,226,0.25)" stroke-width="0.5"/>
+                <circle cx="70" cy="30" r="12" fill="none" stroke="rgba(138,43,226,0.2)" stroke-width="0.5"/>
+                <text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(248,249,250,0.2)" letter-spacing="2">STAR GAZING</text>
+              </svg>
+            </div>
+            <div class="play-btn-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="media-card-info">
+            <span class="media-series">Star Gazing Ep. 12</span>
+            <h3 class="media-ep-title">Daya The Model — More Than a Face</h3>
+            <p class="media-guests">ft. Daya The Model &nbsp;·&nbsp; 41 min</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="bars" role="listitem" aria-label="YO BARS! Totts A Fool Wit It Freestyle" onclick="window.open('https://thebeatdfw.com/author/spaceboifresh/','_blank','noopener,noreferrer')" style="cursor:pointer;" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://thebeatdfw.com/author/spaceboifresh/','_blank','noopener,noreferrer')">
+          <div class="media-thumb">
+            <div class="media-thumb-bg thumb-yobars">
+              <svg viewBox="0 0 100 60" aria-hidden="true">
+                <rect x="20" y="15" width="60" height="30" fill="none" stroke="rgba(255,69,0,0.3)" stroke-width="0.5"/>
+                <rect x="30" y="22" width="40" height="16" fill="rgba(255,69,0,0.08)" stroke="rgba(255,69,0,0.2)" stroke-width="0.3"/>
+                <text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(248,249,250,0.2)" letter-spacing="2">YO BARS!</text>
+              </svg>
+            </div>
+            <div class="play-btn-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="media-card-info">
+            <span class="media-series" style="color:var(--orange);">YO BARS! Vol. 03</span>
+            <h3 class="media-ep-title">Totts — A Fool Wit It (Freestyle)</h3>
+            <p class="media-guests">ft. Totts &nbsp;·&nbsp; 4 min · YouTube Shorts</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="bars" role="listitem" aria-label="YO BARS! DFW Cipher Freestyle" onclick="window.open('https://thebeatdfw.com/author/spaceboifresh/','_blank','noopener,noreferrer')" style="cursor:pointer;" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://thebeatdfw.com/author/spaceboifresh/','_blank','noopener,noreferrer')">
+          <div class="media-thumb">
+            <div class="media-thumb-bg thumb-yobars">
+              <svg viewBox="0 0 100 60" aria-hidden="true">
+                <polygon points="50,10 80,50 20,50" fill="none" stroke="rgba(255,69,0,0.25)" stroke-width="0.5"/>
+                <text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(248,249,250,0.2)" letter-spacing="2">YO BARS!</text>
+              </svg>
+            </div>
+            <div class="play-btn-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="media-card-info">
+            <span class="media-series" style="color:var(--orange);">YO BARS! Vol. 06</span>
+            <h3 class="media-ep-title">DFW Cipher — All Gas No Brakes</h3>
+            <p class="media-guests">4 artists · 7 min · YouTube Shorts</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="interview" role="listitem" aria-label="Star Gazing 97.9 The Beat Spotlight" onclick="window.open('https://thebeatdfw.com/4435263/%F0%9F%8C%9F-star-gazing-with-spaceboifresh-%F0%9F%8C%9F/','_blank','noopener,noreferrer')" style="cursor:pointer;" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://thebeatdfw.com/4435263/%F0%9F%8C%9F-star-gazing-with-spaceboifresh-%F0%9F%8C%9F/','_blank','noopener,noreferrer')">
+          <div class="media-thumb">
+            <div class="media-thumb-bg thumb-stagazing">
+              <svg viewBox="0 0 100 60" aria-hidden="true">
+                <circle cx="50" cy="28" r="20" fill="none" stroke="rgba(138,43,226,0.2)" stroke-width="0.5"/>
+                <circle cx="50" cy="28" r="8" fill="rgba(138,43,226,0.1)" stroke="#8A2BE2" stroke-width="0.5"/>
+                <text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(248,249,250,0.2)" letter-spacing="2">97.9 THE BEAT</text>
+              </svg>
+            </div>
+            <div class="play-btn-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="media-card-info">
+            <span class="media-series">97.9 The Beat Spotlight</span>
+            <h3 class="media-ep-title">Spaceboifresh — Live In the Booth</h3>
+            <p class="media-guests">97.9 The Beat Dallas &nbsp;·&nbsp; 18 min</p>
+          </div>
+        </article>
+
+        <article class="media-card" data-category="bars" role="listitem" aria-label="YO BARS! Vol 09 Freestyle" onclick="window.open('https://thebeatdfw.com/author/spaceboifresh/','_blank','noopener,noreferrer')" style="cursor:pointer;" tabindex="0" onkeydown="if(event.key==='Enter')window.open('https://thebeatdfw.com/author/spaceboifresh/','_blank','noopener,noreferrer')">
+          <div class="media-thumb">
+            <div class="media-thumb-bg thumb-yobars">
+              <svg viewBox="0 0 100 60" aria-hidden="true">
+                <line x1="10" y1="10" x2="90" y2="10" stroke="rgba(255,69,0,0.2)" stroke-width="0.4"/>
+                <line x1="10" y1="20" x2="90" y2="20" stroke="rgba(255,69,0,0.2)" stroke-width="0.4"/>
+                <line x1="10" y1="30" x2="70" y2="30" stroke="rgba(255,69,0,0.2)" stroke-width="0.4"/>
+                <line x1="10" y1="40" x2="80" y2="40" stroke="rgba(255,69,0,0.2)" stroke-width="0.4"/>
+                <text x="50" y="55" text-anchor="middle" font-family="sans-serif" font-size="5" fill="rgba(248,249,250,0.2)" letter-spacing="2">YO BARS!</text>
+              </svg>
+            </div>
+            <div class="play-btn-overlay">
+              <div class="play-circle">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21" fill="currentColor"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="media-card-info">
+            <span class="media-series" style="color:var(--orange);">YO BARS! Vol. 09</span>
+            <h3 class="media-ep-title">Fresh Off the Satellite — Solo Session</h3>
+            <p class="media-guests">Spaceboifresh solo &nbsp;·&nbsp; 3 min</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="slider-nav fade-up">
+      <button class="slider-arrow" onclick="slideLeft()" aria-label="Scroll media left">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+      <button class="slider-arrow" onclick="slideRight()" aria-label="Scroll media right">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<div class="nebula-bar"></div>
+
+<!-- ═══════════════════════════════════════════════════════
+     EPK & BOOKING — MISSION CONTROL
+════════════════════════════════════════════════════════════ -->
+<section id="epk" aria-labelledby="epk-title">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-num" aria-hidden="true">04</span>
+      <span class="section-label">Electronic Press Kit &amp; Booking</span>
+      <h2 class="section-title glitch-hover" id="epk-title" data-text="Mission Control">Mission Control</h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="epk-split">
+
+      <!-- Left: Photo + Bio -->
+      <div class="fade-up">
+        <div class="epk-photo-wrap">
+          <div class="epk-photo-bg"></div>
+          <img
+            src="web-images/spaceboi_pro_5_1772406321128.png"
+            alt="Spaceboifresh — artist portrait for EPK"
+            class="epk-real-photo"
+            loading="lazy" width="640" height="640"
+          />
+          <div class="epk-glow"></div>
+          <div class="epk-photo-overlay"></div>
+          <div class="epk-photo-label">
+            <h3 class="epk-photo-name">SPACEBOIFRESH</h3>
+            <span class="epk-photo-role">Hip-Hop Artist &nbsp;·&nbsp; Radio Host &nbsp;·&nbsp; Audio Engineer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Bio + Form -->
+      <div class="epk-right fade-up" style="transition-delay:0.15s">
+        <div class="radio-badge" role="status" aria-label="Currently on air at 97.9 The Beat">
+          <div class="dot"></div>
+          <span>On Air &mdash; 97.9 The Beat Dallas</span>
+        </div>
+
+        <h2 class="epk-bio-title">Born in <br/>Oak Cliff. <br/>Built for <br/>The Universe.</h2>
+
+        <div class="epk-bio-text">
+          <p>
+            Spaceboifresh is a Dallas-based hip-hop artist, record producer, and audio engineer whose sound bridges the gritty soul of Oak Cliff with the boundless ambition of outer space. Raised in the 214, he studied audio engineering at Cedar Valley College, honing the technical precision that now underpins every track he crafts.
+          </p>
+          <p>
+            As a personality on 97.9 The Beat — Dallas's premier hip-hop and R&amp;B station — Spaceboifresh sits at the intersection of artist and tastemaker. Through his <em>Star Gazing</em> interview series and the viral <em>YO BARS!</em> freestyle platform, he has amplified the voices of rising DFW talent while establishing himself as a pillar of the local scene.
+          </p>
+          <p>
+            His discography — <em>Dallafornia</em>, <em>For The Low</em>, and <em>Planet EX</em> — charts a sonic journey from sun-soaked West Coast-influenced bounce to deep intergalactic experimentation, all rooted in lived experience.
+          </p>
+        </div>
+
+        <div class="epk-stats">
+          <div class="epk-stat">
+            <span class="epk-stat-val">97.9</span>
+            <span class="epk-stat-label">The Beat Dallas</span>
+          </div>
+          <div class="epk-stat">
+            <span class="epk-stat-val">3+</span>
+            <span class="epk-stat-label">Studio Projects</span>
+          </div>
+          <div class="epk-stat">
+            <span class="epk-stat-val">214</span>
+            <span class="epk-stat-label">Oak Cliff, Dallas</span>
+          </div>
+        </div>
+
+        <div class="epk-divider"></div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:24px;">
+          <p class="booking-form-title" style="margin-bottom:0;">Booking &amp; Features</p>
+          <a href="https://www.mukonii.com/spaceboifresh" class="btn-ghost" style="font-size:0.58rem;padding:8px 16px;" target="_blank" rel="noopener noreferrer">View Full EPK &rarr;</a>
+        </div>
+        <form onsubmit="handleBooking(event)" novalidate>
+          <div class="form-field">
+            <label for="book-name">Your Name / Company</label>
+            <input type="text" id="book-name" name="name" required autocomplete="organization" placeholder="Name or org" />
+          </div>
+          <div class="form-field">
+            <label for="book-email">Email Address</label>
+            <input type="email" id="book-email" name="email" required autocomplete="email" placeholder="contact@email.com" />
+          </div>
+          <div class="form-field">
+            <label for="book-type">Request Type</label>
+            <select id="book-type" name="type">
+              <option value="performance">Live Performance / Headliner Set</option>
+              <option value="feature">Feature / Collaboration</option>
+              <option value="radio">Radio / Media Appearance</option>
+              <option value="interview">Star Gazing Interview Request</option>
+              <option value="hosting">Event Hosting / MC</option>
+              <option value="other">Other Inquiry</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="book-msg">Message</label>
+            <textarea id="book-msg" name="message" placeholder="Tell us about your project, event date, budget…" aria-label="Booking message"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Send to Mission Control</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PRE-FOOTER CTA
+════════════════════════════════════════════════════════════ -->
+<section id="cta-section" aria-label="Call to action">
+  <div class="cta-inner">
+    <div class="cta-bg-glow" aria-hidden="true"></div>
+    <div class="cta-grid-lines" aria-hidden="true"></div>
+
+    <span class="cta-eyebrow">Ready for Liftoff?</span>
+    <h2 class="cta-headline fade-up">
+      Book <em>The</em><br/>Universe's<br/>Hottest Act
+    </h2>
+
+    <!-- Waveform decoration -->
+    <div class="waveform-accent fade-up" aria-hidden="true" style="transition-delay:0.1s">
+      <div class="bar" style="height:28px;animation-delay:0s"></div>
+      <div class="bar" style="height:18px;animation-delay:0.1s"></div>
+      <div class="bar" style="height:32px;animation-delay:0.15s"></div>
+      <div class="bar" style="height:12px;animation-delay:0.05s"></div>
+      <div class="bar" style="height:24px;animation-delay:0.2s"></div>
+      <div class="bar" style="height:28px;animation-delay:0.08s"></div>
+      <div class="bar" style="height:16px;animation-delay:0.12s"></div>
+      <div class="bar" style="height:32px;animation-delay:0.18s"></div>
+      <div class="bar" style="height:20px;animation-delay:0.06s"></div>
+      <div class="bar" style="height:28px;animation-delay:0.14s"></div>
+      <div class="bar" style="height:12px;animation-delay:0.22s"></div>
+      <div class="bar" style="height:24px;animation-delay:0.04s"></div>
+      <div class="bar" style="height:32px;animation-delay:0.16s"></div>
+      <div class="bar" style="height:18px;animation-delay:0.09s"></div>
+      <div class="bar" style="height:28px;animation-delay:0.19s"></div>
+    </div>
+
+    <div class="cta-buttons fade-up" style="transition-delay:0.2s">
+      <a href="https://www.mukonii.com/spaceboifresh" class="btn-primary" target="_blank" rel="noopener noreferrer" style="padding:16px 44px;font-size:0.65rem;">Book Spaceboifresh</a>
+      <a href="https://open.spotify.com/artist/62SKs6Q8OvB0kIKCpiXgP7" class="btn-ghost" target="_blank" rel="noopener noreferrer" style="padding:16px 44px;font-size:0.65rem;">Stream Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- Final marquee -->
+<div class="marquee-strip" aria-hidden="true" style="border-bottom:none;">
+  <div class="marquee-track" style="animation-duration:30s;">
+    <span class="marquee-item">Spaceboifresh <span class="sep"></span> Out Of This World <span class="sep"></span> Dallas TX <span class="sep"></span> 97.9 The Beat <span class="sep"></span> Oak Cliff <span class="sep"></span> Audio Engineer <span class="sep"></span> Hip-Hop Artist <span class="sep"></span> Radio Personality <span class="sep"></span> Tastemaker <span class="sep"></span> DFW <span class="sep"></span></span>
+    <span class="marquee-item" aria-hidden="true">Spaceboifresh <span class="sep"></span> Out Of This World <span class="sep"></span> Dallas TX <span class="sep"></span> 97.9 The Beat <span class="sep"></span> Oak Cliff <span class="sep"></span> Audio Engineer <span class="sep"></span> Hip-Hop Artist <span class="sep"></span> Radio Personality <span class="sep"></span> Tastemaker <span class="sep"></span> DFW <span class="sep"></span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-logo">SPACE<span>BOI</span>FRESH</div>
+
+      <div class="footer-socials" role="list" aria-label="Social media links">
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/spaceboifresh/" class="footer-social-link" role="listitem" aria-label="Spaceboifresh on Instagram" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <!-- Twitter / X -->
+        <a href="https://x.com/MCSpaceBFresh" class="footer-social-link" role="listitem" aria-label="Spaceboifresh on X (Twitter)" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <!-- 97.9 The Beat -->
+        <a href="https://thebeatdfw.com/author/spaceboifresh/" class="footer-social-link" role="listitem" aria-label="Spaceboifresh on 97.9 The Beat DFW" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M16.72 7.28a6 6 0 0 1 0 8.49"/><path d="M7.28 7.28a6 6 0 0 0 0 8.49"/><path d="M19.56 4.44a10 10 0 0 1 0 15.12"/><path d="M4.44 4.44a10 10 0 0 0 0 15.12"/></svg>
+        </a>
+        <!-- Spotify -->
+        <a href="https://open.spotify.com/artist/62SKs6Q8OvB0kIKCpiXgP7" class="footer-social-link" role="listitem" aria-label="Spaceboifresh on Spotify" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+        </a>
+        <!-- SoundCloud -->
+        <a href="https://soundcloud.com/spaceboifresh" class="footer-social-link" role="listitem" aria-label="Spaceboifresh on SoundCloud" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.175 12.225c-.015 0-.03.002-.044.006C.5 12.346 0 12.93 0 13.625c0 .71.507 1.296 1.175 1.394v.006h21.65v-.006c.668-.098 1.175-.684 1.175-1.394s-.507-1.296-1.175-1.394v-.006a2.97 2.97 0 0 0-1.35.27 4.608 4.608 0 0 0-.3-1.665 3.978 3.978 0 0 0-3.9-2.64 4.014 4.014 0 0 0-2.34.75 6.126 6.126 0 0 0-5.61-3.66 6.12 6.12 0 0 0-6.12 6.12c0 .03 0 .06.002.09a2.88 2.88 0 0 0-.832-.135z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <p class="footer-copy">
+      &copy; 2025 Spaceboifresh &nbsp;·&nbsp; Dallas, TX &nbsp;·&nbsp; All Rights Reserved &nbsp;·&nbsp; Bookings: bookings@spaceboifresh.world
+    </p>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── GALAXY CANVAS ───────────────────────────────────── */
+  const canvas = document.getElementById('star-canvas');
+  const ctx    = canvas.getContext('2d');
+  let W, H, stars = [], shooters = [], animFrame, t = 0;
+
+  // Mouse tracking (normalised -0.5 to 0.5)
+  let mouseX = 0, mouseY = 0, targetMX = 0, targetMY = 0;
+  document.addEventListener('mousemove', e => {
+    targetMX = (e.clientX / window.innerWidth)  - 0.5;
+    targetMY = (e.clientY / window.innerHeight) - 0.5;
+  }, { passive: true });
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  /* Regular stars */
+  function createStars(n) {
+    stars = [];
+    for (let i = 0; i < n; i++) {
+      const r = Math.random();
+      stars.push({
+        x:   Math.random() * W,
+        y:   Math.random() * H,
+        r:   Math.random() * 1.6 + 0.25,
+        a:   Math.random(),
+        da:  (Math.random() * 0.005 + 0.001) * (Math.random() > 0.5 ? 1 : -1),
+        spd: Math.random() * 0.05 + 0.008,
+        // color tiers: white / purple / blue / cyan
+        hue: r > 0.97 ? 180 : r > 0.94 ? 220 : r > 0.90 ? 270 : -1
+      });
+    }
+  }
+
+  /* Shooting stars */
+  function spawnShooter() {
+    shooters.push({
+      x:    Math.random() * W,
+      y:    Math.random() * H * 0.5,
+      len:  Math.random() * 120 + 60,
+      spd:  Math.random() * 9 + 6,
+      a:    1,
+      ang:  Math.PI * (0.18 + Math.random() * 0.14)  // downward diagonal
+    });
+  }
+
+  function drawGalaxy(mx, my) {
+    ctx.clearRect(0, 0, W, H);
+
+    /* ── Base background ── */
+    const bg = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W,H) * 0.9);
+    bg.addColorStop(0,   '#0d0018');
+    bg.addColorStop(0.4, '#080010');
+    bg.addColorStop(1,   '#050505');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    /* ── Rotating galaxy arm (two sweeping gradients) ── */
+    const armAngle = t * 0.0003;
+    for (let arm = 0; arm < 2; arm++) {
+      const angle = armAngle + arm * Math.PI;
+      const cx = W * 0.5 + Math.cos(angle) * W * 0.08;
+      const cy = H * 0.5 + Math.sin(angle) * H * 0.08;
+      const arm1 = ctx.createRadialGradient(cx, cy, 0, cx, cy, W * 0.55);
+      arm1.addColorStop(0,   'rgba(138,43,226,0.07)');
+      arm1.addColorStop(0.4, 'rgba(80,0,180,0.03)');
+      arm1.addColorStop(1,   'transparent');
+      ctx.fillStyle = arm1;
+      ctx.fillRect(0, 0, W, H);
+    }
+
+    /* ── Mouse-reactive purple nebula ── */
+    const nx = W * (0.35 + mx * 0.22);
+    const ny = H * (0.40 + my * 0.18);
+    const neb1 = ctx.createRadialGradient(nx, ny, 0, nx, ny, W * 0.38);
+    neb1.addColorStop(0,   'rgba(138,43,226,0.11)');
+    neb1.addColorStop(0.5, 'rgba(80,0,160,0.05)');
+    neb1.addColorStop(1,   'transparent');
+    ctx.fillStyle = neb1;
+    ctx.fillRect(0, 0, W, H);
+
+    /* ── Static blue nebula (right side) ── */
+    const neb2 = ctx.createRadialGradient(W * 0.78, H * 0.35, 0, W * 0.78, H * 0.35, W * 0.3);
+    neb2.addColorStop(0,   'rgba(0,119,255,0.09)');
+    neb2.addColorStop(0.5, 'rgba(0,60,180,0.04)');
+    neb2.addColorStop(1,   'transparent');
+    ctx.fillStyle = neb2;
+    ctx.fillRect(0, 0, W, H);
+
+    /* ── Orange accent nebula (lower center) ── */
+    const neb3 = ctx.createRadialGradient(W * 0.5, H * 0.75, 0, W * 0.5, H * 0.75, W * 0.22);
+    neb3.addColorStop(0,   'rgba(255,69,0,0.05)');
+    neb3.addColorStop(1,   'transparent');
+    ctx.fillStyle = neb3;
+    ctx.fillRect(0, 0, W, H);
+
+    /* ── Stars ── */
+    for (const s of stars) {
+      s.a  += s.da;
+      if (s.a > 1 || s.a < 0) s.da = -s.da;
+      s.y  -= s.spd;
+      if (s.y < -2) { s.y = H + 2; s.x = Math.random() * W; }
+
+      const alpha = Math.max(0, Math.min(1, s.a));
+      if (s.hue === 270)      ctx.fillStyle = `hsla(270,80%,76%,${alpha * 0.85})`;
+      else if (s.hue === 220) ctx.fillStyle = `hsla(220,90%,75%,${alpha * 0.8})`;
+      else if (s.hue === 180) ctx.fillStyle = `hsla(180,80%,78%,${alpha * 0.75})`;
+      else                    ctx.fillStyle = `rgba(240,245,255,${alpha * 0.88})`;
+
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    /* ── Shooting stars ── */
+    for (let i = shooters.length - 1; i >= 0; i--) {
+      const sh = shooters[i];
+      sh.x += Math.cos(sh.ang) * sh.spd;
+      sh.y += Math.sin(sh.ang) * sh.spd;
+      sh.a -= 0.022;
+      if (sh.a <= 0) { shooters.splice(i, 1); continue; }
+
+      const grad = ctx.createLinearGradient(
+        sh.x, sh.y,
+        sh.x - Math.cos(sh.ang) * sh.len,
+        sh.y - Math.sin(sh.ang) * sh.len
+      );
+      grad.addColorStop(0,   `rgba(248,249,250,${sh.a})`);
+      grad.addColorStop(0.4, `rgba(138,43,226,${sh.a * 0.5})`);
+      grad.addColorStop(1,   'transparent');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth   = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(sh.x, sh.y);
+      ctx.lineTo(sh.x - Math.cos(sh.ang) * sh.len, sh.y - Math.sin(sh.ang) * sh.len);
+      ctx.stroke();
+    }
+  }
+
+  /* Artist image parallax */
+  const heroWrap = document.getElementById('heroArtistWrap');
+  function updateParallax(mx, my) {
+    if (!heroWrap) return;
+    const px = mx * 14;
+    const py = my * 10;
+    heroWrap.style.transform = `translate(${px}px, ${py}px)`;
+  }
+
+  let shootTimer = 0;
+
+  function loop(ts) {
+    t = ts;
+    // Smooth mouse lerp
+    mouseX += (targetMX - mouseX) * 0.04;
+    mouseY += (targetMY - mouseY) * 0.04;
+
+    drawGalaxy(mouseX, mouseY);
+    updateParallax(mouseX, mouseY);
+
+    // Spawn shooting stars periodically
+    shootTimer += 16;
+    if (shootTimer > 2800 + Math.random() * 4000) {
+      spawnShooter();
+      shootTimer = 0;
+    }
+
+    animFrame = requestAnimationFrame(loop);
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!prefersReduced) {
+    resize();
+    createStars(340);
+    animFrame = requestAnimationFrame(loop);
+    window.addEventListener('resize', () => { resize(); createStars(340); }, { passive: true });
+  } else {
+    resize();
+    createStars(340);
+    drawGalaxy(0, 0);
+  }
+
+  /* ── NAV SCROLL ───────────────────────────────────────── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  /* ── HAMBURGER ────────────────────────────────────────── */
+  const hamburger   = document.getElementById('hamburger');
+  const mobileMenu  = document.getElementById('mobileMenu');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    hamburger.setAttribute('aria-expanded', menuOpen);
+    const bars = hamburger.querySelectorAll('span');
+    if (menuOpen) {
+      bars[0].style.transform = 'translateY(6.5px) rotate(45deg)';
+      bars[1].style.opacity   = '0';
+      bars[2].style.transform = 'translateY(-6.5px) rotate(-45deg)';
+    } else {
+      bars.forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+    }
+  });
+
+  document.querySelectorAll('.mobile-nav-link, .nav-mobile-menu .btn-ghost').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.querySelectorAll('span').forEach(b => { b.style.transform = ''; b.style.opacity = ''; });
+    });
+  });
+
+  /* ── SCROLL FADE IN ──────────────────────────────────── */
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(el => io.observe(el));
+
+  /* ── MODAL ────────────────────────────────────────────── */
+  const modalOverlay   = document.getElementById('rsvpModal');
+  const modalLabel     = document.getElementById('modal-event-label');
+  const modalTitle     = document.getElementById('modal-title');
+  const modalExtraField = document.getElementById('modal-extra-field');
+
+  const eventData = {
+    goini:   { label: 'Open Mic — March 28', title: 'Got It Or Not It?', showType: true  },
+    allpink: { label: 'NYE Soiree — Dec 31',  title: 'All Pink Party',    showType: false },
+    tacos:   { label: 'Festival — April 19',  title: 'Tacos & Beats 2025', showType: false }
+  };
+
+  window.openModal = function(key) {
+    const d = eventData[key] || {};
+    if (modalLabel) modalLabel.textContent = d.label || '';
+    if (modalTitle) modalTitle.textContent = d.title || 'RSVP';
+    if (modalExtraField) modalExtraField.style.display = d.showType ? '' : 'none';
+    modalOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = modalOverlay.querySelector('.modal-close');
+    if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+  };
+
+  window.closeModal = function() {
+    modalOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ── RSVP FORM ───────────────────────────────────────── */
+  window.handleRsvp = function(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Confirmed!';
+    btn.style.background = '#1a6b1a';
+    setTimeout(() => { closeModal(); btn.textContent = 'Secure My Spot'; btn.style.background = ''; }, 2200);
+  };
+
+  window.handleBooking = function(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Message Sent —';
+    btn.style.background = '#1a6b1a';
+    setTimeout(() => { btn.textContent = 'Send to Mission Control'; btn.style.background = ''; }, 3000);
+  };
+
+  /* ── MEDIA SLIDER ────────────────────────────────────── */
+  const slider = document.getElementById('mediaSlider');
+  const CARD_W = 320; // card + gap approx
+
+  window.slideLeft  = () => { slider.scrollBy({ left: -CARD_W, behavior: 'smooth' }); };
+  window.slideRight = () => { slider.scrollBy({ left:  CARD_W, behavior: 'smooth' }); };
+
+  /* ── MEDIA FILTER TABS ───────────────────────────────── */
+  window.filterMedia = function(btn, filter) {
+    document.querySelectorAll('.media-tab').forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
+
+    document.querySelectorAll('.media-card').forEach(card => {
+      const show = filter === 'all' || card.dataset.category === filter;
+      card.style.display = show ? '' : 'none';
+    });
+    slider.scrollTo({ left: 0, behavior: 'smooth' });
+  };
+
+  /* ── CUSTOM CURSOR ────────────────────────────────────── */
+  const cursorDot  = document.getElementById('cursorDot');
+  const cursorRing = document.getElementById('cursorRing');
+
+  if (cursorDot && cursorRing && window.matchMedia('(pointer: fine)').matches) {
+    let cx = 0, cy = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      cx = e.clientX; cy = e.clientY;
+    }, { passive: true });
+
+    const hoverTargets = 'a, button, [role="button"], .album-card, .event-card, .media-card, .stream-btn';
+
+    document.querySelectorAll(hoverTargets).forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('hovered');
+        cursorRing.classList.add('hovered');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('hovered');
+        cursorRing.classList.remove('hovered');
+      });
+    });
+
+    (function cursorLoop() {
+      cursorDot.style.left  = cx + 'px';
+      cursorDot.style.top   = cy + 'px';
+      rx += (cx - rx) * 0.14;
+      ry += (cy - ry) * 0.14;
+      cursorRing.style.left = rx + 'px';
+      cursorRing.style.top  = ry + 'px';
+      requestAnimationFrame(cursorLoop);
+    })();
+  }
+
+  /* ── TEXT SCRAMBLE ON REVEAL ─────────────────────────── */
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+  function scrambleText(el, original, duration) {
+    let frame = 0;
+    const totalFrames = Math.round(duration / 16);
+    const interval = setInterval(() => {
+      el.textContent = original.split('').map((char, i) => {
+        if (char === ' ') return ' ';
+        if (frame / totalFrames > i / original.length) return char;
+        return chars[Math.floor(Math.random() * chars.length)];
+      }).join('');
+      frame++;
+      if (frame >= totalFrames) {
+        el.textContent = original;
+        clearInterval(interval);
+      }
+    }, 16);
+  }
+
+  const scrambleTargets = document.querySelectorAll('.section-title');
+  const scrambleObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const el   = e.target;
+        const orig = el.dataset.text || el.textContent;
+        if (!prefersReduced) setTimeout(() => scrambleText(el, orig, 700), 200);
+        scrambleObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  scrambleTargets.forEach(el => {
+    if (!el.dataset.text) el.dataset.text = el.textContent;
+    scrambleObserver.observe(el);
+  });
+
+})();
+</script>
+
+</body>
+</html>
