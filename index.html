@@ -1528,22 +1528,17 @@
         );
       }
 
-      /* Show data readout above title on mobile */
-      .hero-data-readout {
-        display: flex !important;
-        justify-content: flex-start;
-        margin-top: 0;
-        margin-bottom: 12px;
-        animation: none;
-        opacity: 1;
-      }
+      /* Hide text that's hard to read over the image */
+      .hero-data-readout { display: none !important; }
+      .hero-title        { display: none; }
+      .hero-subtitle     { display: none; }
 
       .hero-ctas {
         justify-content: flex-start;
         flex-direction: row;
         flex-wrap: wrap;
         gap: 12px;
-        margin-top: 20px;
+        margin-top: 0;
       }
       .hero-ctas .btn-primary,
       .hero-ctas .btn-ghost {
@@ -1552,7 +1547,6 @@
         font-size: 0.58rem;
         padding: 12px 22px;
       }
-      .hero-subtitle { margin-top: 8px; }
     }
 
     /* ─── LIVE FROM THE COSMOS ───────────────────────────────────── */
