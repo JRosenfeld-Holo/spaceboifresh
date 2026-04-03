@@ -465,6 +465,9 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 20px;
+      justify-content: center;
+      max-width: 740px;
+      margin: 0 auto;
     }
     .event-card {
       background: var(--glass);
@@ -1569,84 +1572,84 @@
       grid-template-columns: 1fr 1fr;
       min-height: 75vh;
     }
-    .live-panel {
-      position: relative;
+    /* ─── EVENT PANELS (portrait flyers) ────────────────────────── */
+    .live-panel-event {
+      display: flex;
+      flex-direction: column;
+      background: var(--void-2);
+      border: 1px solid rgba(138,43,226,0.15);
       overflow: hidden;
-      min-height: 500px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-    .live-panel-bg {
-      position: absolute;
-      inset: 0;
+    .live-panel-event:hover {
+      border-color: rgba(138,43,226,0.45);
+      box-shadow: 0 0 40px rgba(138,43,226,0.12);
     }
-    .live-panel-bg-1 { background: linear-gradient(135deg, #04000f 0%, #0e0025 60%, #04000f 100%); }
-    .live-panel-bg-2 { background: linear-gradient(135deg, #020012 0%, #0a001e 60%, #020012 100%); }
-    .live-panel-img {
-      position: absolute;
-      inset: 0;
+    .live-panel-event-img-wrap {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .live-panel-event-img {
       width: 100%;
       height: 100%;
+      display: block;
       object-fit: cover;
       object-position: center top;
-      mix-blend-mode: screen;
-      transition: transform 0.9s var(--ease);
     }
-    .live-panel:hover .live-panel-img { transform: scale(1.06); }
-    .live-panel-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top,
-        rgba(5,5,5,0.92) 0%,
-        rgba(5,5,5,0.4) 45%,
-        transparent 100%
-      );
-      z-index: 2;
-    }
-    .live-panel-content {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      padding: 40px;
-      z-index: 3;
+    .live-panel-event-info {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: var(--void-2);
     }
     .live-panel-tag {
       font-size: 0.55rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
       color: var(--orange);
-      margin-bottom: 8px;
       display: block;
     }
     .live-panel-title {
       font-family: var(--font-head);
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--star);
-      line-height: 1.1;
+      line-height: 1.15;
     }
     .live-panel-divider {
       width: 28px; height: 1px;
       background: var(--purple);
-      margin: 12px 0;
+      margin: 2px 0;
     }
     .live-panel-desc {
       font-size: 0.78rem;
       color: var(--star-dim);
       line-height: 1.65;
-      max-width: 280px;
     }
-    .live-center-overlay {
-      position: absolute;
-      top: 0; left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 8;
-      pointer-events: none;
-      gap: 8px;
+    .rsvp-btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 28px;
+      background: transparent;
+      border: 1px solid var(--purple);
+      color: var(--star);
+      font-family: var(--font-head);
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+      align-self: flex-start;
+    }
+    .rsvp-btn:hover {
+      background: var(--purple);
+      border-color: var(--purple);
+      color: #fff;
     }
     .live-vdivider {
       position: absolute;
@@ -1654,8 +1657,8 @@
       width: 1px;
       background: linear-gradient(to bottom,
         transparent 0%,
-        rgba(138,43,226,0.6) 20%,
-        rgba(138,43,226,0.6) 80%,
+        rgba(138,43,226,0.4) 20%,
+        rgba(138,43,226,0.4) 80%,
         transparent 100%
       );
       z-index: 7;
@@ -1663,10 +1666,9 @@
     }
     @media (max-width: 768px) {
       .live-inner { grid-template-columns: 1fr; }
-      .live-panel { min-height: 400px; }
-      .live-vdivider, .live-center-overlay { display: none; }
+      .live-vdivider { display: none; }
       .live-header { padding: 80px 24px 40px; }
-      .live-panel-content { padding: 24px; }
+      .live-panel-event-info { padding: 24px; }
     }
 
     /* ─── EPK REAL PHOTO ─────────────────────────────────────────── */
@@ -1773,7 +1775,7 @@
       .epk-stats { gap: 20px; }
 
       /* Live section panels */
-      .live-panel { min-height: 340px; }
+      .live-panel-event-info { padding: 20px; }
     }
 
     /* ── 480px breakpoint ─────────────────────────────────────── */
@@ -1817,7 +1819,6 @@
       .footer-inner { gap: 20px; }
 
       /* Live */
-      .live-panel { min-height: 280px; }
       .live-header { padding: 60px 16px 32px; }
     }
   </style>
@@ -2072,80 +2073,53 @@
       <div class="event-card fade-up"
            role="button"
            tabindex="0"
-           aria-label="RSVP for Got It Or Not It Open Mic"
-           onclick="openModal('goini')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')openModal('goini')">
-        <div class="event-date-badge">
-          <span class="month">Mar</span>
-          <span class="day">28</span>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Monthly &mdash; Open Mic</span>
-          <h3 class="event-title">Got It Or Not It?</h3>
-          <p class="event-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Nines Bar &amp; Lounge &nbsp;&middot;&nbsp; Dallas, TX
-          </p>
-          <p class="event-meta" style="margin-top:4px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            Doors 8PM &nbsp;&middot;&nbsp; Open Mic 9PM
-          </p>
-          <div class="event-rsvp">
-            <button class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('goini')" aria-label="RSVP for Got It Or Not It">RSVP / Sign Up</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-card fade-up" style="transition-delay:0.1s"
-           role="button"
-           tabindex="0"
-           aria-label="Get tickets for All Pink Party NYE Mansion Soiree"
-           onclick="window.open('https://events.eventnoire.com/promoter/675f6ceb-9c0c-4adf-bda8-17b90ad1e02c','_blank','noopener,noreferrer')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')window.open('https://events.eventnoire.com/promoter/675f6ceb-9c0c-4adf-bda8-17b90ad1e02c','_blank','noopener,noreferrer')">
-        <div class="event-date-badge">
-          <span class="month">Dec</span>
-          <span class="day">31</span>
-        </div>
-        <div class="event-body">
-          <span class="event-tag">Annual &mdash; NYE Soiree</span>
-          <h3 class="event-title">All Pink Party &mdash; NYE Mansion Soiree</h3>
-          <p class="event-meta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Private Venue &nbsp;&middot;&nbsp; Dallas, TX
-          </p>
-          <p class="event-meta" style="margin-top:4px;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            9PM &mdash; 3AM &nbsp;&middot;&nbsp; Dress Code: All Pink
-          </p>
-          <div class="event-rsvp">
-            <a href="https://events.eventnoire.com/promoter/675f6ceb-9c0c-4adf-bda8-17b90ad1e02c" class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;display:inline-block;" target="_blank" rel="noopener noreferrer" aria-label="Get tickets for NYE Soiree on EventNoire">Get Tickets</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="event-card fade-up" style="transition-delay:0.2s"
-           role="button"
-           tabindex="0"
-           aria-label="More info about Tacos and Beats Festival"
-           onclick="openModal('tacos')"
-           onkeydown="if(event.key==='Enter'||event.key===' ')openModal('tacos')">
+           aria-label="RSVP for Content Day"
+           onclick="window.location.href='event-content-day.html'"
+           onkeydown="if(event.key==='Enter'||event.key===' ')window.location.href='event-content-day.html'">
         <div class="event-date-badge">
           <span class="month">Apr</span>
-          <span class="day">19</span>
+          <span class="day">17</span>
         </div>
         <div class="event-body">
-          <span class="event-tag">Festival &mdash; Live Performance</span>
-          <h3 class="event-title">Tacos &amp; Beats Festival 2025</h3>
+          <span class="event-tag">Two Venues &mdash; Content Day</span>
+          <h3 class="event-title">Content Day</h3>
           <p class="event-meta">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Deep Ellum &nbsp;&middot;&nbsp; Dallas, TX
+            Empire Smoke &amp; Vape &nbsp;&middot;&nbsp; 2626 S. Westmoreland Rd.
           </p>
           <p class="event-meta" style="margin-top:4px;">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            2PM &mdash; 10PM &nbsp;&middot;&nbsp; All Ages
+            6PM&ndash;9PM &nbsp;&middot;&nbsp; Then Nines Bar Stoner Edition 10PM&ndash;2AM
           </p>
           <div class="event-rsvp">
-            <button class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;" onclick="event.stopPropagation();openModal('tacos')" aria-label="Get tickets for Tacos and Beats">Get Tickets</button>
+            <a href="event-content-day.html" class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;display:inline-block;" aria-label="RSVP for Content Day">RSVP Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-card fade-up" style="transition-delay:0.05s"
+           role="button"
+           tabindex="0"
+           aria-label="RSVP for Kickback in the Yard Again"
+           onclick="window.location.href='event-kickback.html'"
+           onkeydown="if(event.key==='Enter'||event.key===' ')window.location.href='event-kickback.html'">
+        <div class="event-date-badge">
+          <span class="month">Apr</span>
+          <span class="day">18</span>
+        </div>
+        <div class="event-body">
+          <span class="event-tag">Kickback Edition</span>
+          <h3 class="event-title">Kickback in the Yard Again</h3>
+          <p class="event-meta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Dallas, TX
+          </p>
+          <p class="event-meta" style="margin-top:4px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            7PM&ndash;11PM
+          </p>
+          <div class="event-rsvp">
+            <a href="event-kickback.html" class="btn-ghost" style="font-size:0.58rem;padding:8px 18px;display:inline-block;" aria-label="RSVP for Kickback in the Yard Again">RSVP Now</a>
           </div>
         </div>
       </div>
@@ -2208,48 +2182,52 @@
   <div class="live-wrap">
     <div class="live-inner">
 
-      <div class="live-panel fade-up">
-        <div class="live-panel-bg live-panel-bg-1"></div>
-        <img
-          src="web-images/spaceboi_pro_1_1772404117736.png"
-          alt="Spaceboifresh performing live at a festival — neon galaxy stage backdrop"
-          class="live-panel-img"
-          loading="lazy" width="640" height="640"
-        />
-        <div class="live-panel-overlay"></div>
-        <div class="live-panel-content">
-          <span class="live-panel-tag">Festival Stage</span>
-          <h3 class="live-panel-title">Tacos &amp; Beats</h3>
+      <div class="live-panel-event fade-up">
+        <div class="live-panel-event-img-wrap">
+          <img
+            src="event images/content_day.png"
+            alt="Content Day at Empire Smoke &amp; Vape — April 17, 6PM–9PM, then Nines Bar Stoner Edition 10PM–2AM"
+            class="live-panel-event-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="live-panel-event-info">
+          <span class="live-panel-tag">Apr 17 &middot; Two Venues</span>
+          <h3 class="live-panel-title">Content Day</h3>
           <div class="live-panel-divider"></div>
-          <p class="live-panel-desc">Deep Ellum, Dallas. Where the universe touches the pavement and Spaceboifresh commands every frequency in the room.</p>
+          <p class="live-panel-desc">
+            Empire Smoke &amp; Vape &mdash; 2626 S. Westmoreland Rd. &middot; 6PM&ndash;9PM<br>
+            Then: Nines Bar Stoner Edition &middot; 10PM&ndash;2AM
+          </p>
+          <a href="event-content-day.html" class="rsvp-btn">RSVP Now</a>
         </div>
       </div>
 
-      <div class="live-panel fade-up" style="transition-delay:0.15s">
-        <div class="live-panel-bg live-panel-bg-2"></div>
-        <img
-          src="web-images/spaceboi_pro_2_1772404135426.png"
-          alt="Spaceboifresh on stage with microphone — massive crowd, cosmic light show"
-          class="live-panel-img"
-          loading="lazy" width="640" height="640"
-        />
-        <div class="live-panel-overlay"></div>
-        <div class="live-panel-content">
-          <span class="live-panel-tag">Live Set</span>
-          <h3 class="live-panel-title">Out of This World</h3>
+      <div class="live-panel-event fade-up" style="transition-delay:0.15s">
+        <div class="live-panel-event-img-wrap">
+          <img
+            src="event images/kick back.png"
+            alt="Kickback in the Yard Again — April 18, Kickback Edition, 7PM–11PM"
+            class="live-panel-event-img"
+            loading="lazy"
+          />
+        </div>
+        <div class="live-panel-event-info">
+          <span class="live-panel-tag">Apr 18 &middot; Kickback Edition</span>
+          <h3 class="live-panel-title">Kickback in the Yard</h3>
           <div class="live-panel-divider"></div>
-          <p class="live-panel-desc">Every performance is a transmission from another dimension. The energy doesn't stop until the whole crowd is in orbit.</p>
+          <p class="live-panel-desc">
+            Come kick back. Good vibes, great people, good smoke.<br>
+            7PM&ndash;11PM
+          </p>
+          <a href="event-kickback.html" class="rsvp-btn">RSVP Now</a>
         </div>
       </div>
 
     </div>
 
-    <!-- Vertical divider + center badge -->
+    <!-- Vertical divider -->
     <div class="live-vdivider" aria-hidden="true"></div>
-    <div class="live-center-overlay" aria-hidden="true">
-      <span style="font-family:var(--font-head);font-size:clamp(1.6rem,4vw,3.2rem);font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--star);text-shadow:0 0 32px rgba(138,43,226,0.9),0 0 64px rgba(138,43,226,0.4);white-space:nowrap;">LIVE</span>
-      <span style="font-size:0.55rem;letter-spacing:0.45em;text-transform:uppercase;color:var(--purple);white-space:nowrap;">In Your Orbit</span>
-    </div>
   </div>
 
 </section>
