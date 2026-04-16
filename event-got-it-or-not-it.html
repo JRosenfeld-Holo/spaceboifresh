@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Got It Or Not It? DFW — Apr 24, 2026 | SPACEBOIFRESH</title>
+  <meta name="description" content="Got It Or Not It? DFW — Monthly Artist Competition & Mixer. April 24, 2026. The NinesBar, 2911 Main St. Dallas, TX. 7PM–10PM. Presented by Spaceboifresh." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void:       #050505;
+      --void-2:     #0d0d0d;
+      --void-3:     #141414;
+      --star:       #F8F9FA;
+      --star-dim:   rgba(248,249,250,0.6);
+      --purple:     #8A2BE2;
+      --orange:     #FF4500;
+      --font-head:  'Syncopate', sans-serif;
+      --font-body:  'Inter', sans-serif;
+      --ease:       cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--void);
+      color: var(--star);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 68px;
+      background: rgba(5,5,5,0.88);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      padding: 0 32px;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--star);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--star-dim);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s ease;
+    }
+    .nav-back:hover { color: var(--star); }
+    .nav-back svg { width: 12px; height: 12px; }
+
+    /* MAIN */
+    main {
+      padding-top: 68px;
+      max-width: 640px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+      padding-bottom: 80px;
+    }
+
+    /* HERO FLYER */
+    .flyer-wrap {
+      margin: 48px 0 40px;
+      border: 1px solid rgba(138,43,226,0.3);
+      box-shadow: 0 0 60px rgba(138,43,226,0.1);
+    }
+    .flyer-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* EVENT INFO */
+    .event-label {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .event-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 6vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--star);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .event-divider {
+      width: 40px;
+      height: 1px;
+      background: var(--purple);
+      margin-bottom: 24px;
+    }
+
+    .event-details {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .event-detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .event-detail-label {
+      font-family: var(--font-head);
+      font-size: 0.45rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--purple);
+      min-width: 72px;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .event-detail-value {
+      color: var(--star);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .event-detail-value .sub {
+      display: block;
+      color: var(--star-dim);
+      font-size: 0.78rem;
+      margin-top: 2px;
+    }
+
+    .theme-badge {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 10px 20px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      font-family: var(--font-head);
+      font-size: 0.48rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+    }
+
+    /* SECTION DIVIDER */
+    .section-break {
+      border: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin: 40px 0;
+    }
+
+    /* RULES & PRIZE IMAGES */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .info-img-wrap {
+      border: 1px solid rgba(255,255,255,0.06);
+      overflow: hidden;
+    }
+
+    .info-img-wrap img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* RULES BLOCK */
+    .rules-block {
+      background: var(--void-2);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 32px;
+      margin-bottom: 40px;
+    }
+
+    .rules-heading {
+      font-family: var(--font-head);
+      font-size: 0.55rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 16px;
+    }
+
+    .rules-block p {
+      font-size: 0.88rem;
+      color: var(--star-dim);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .rules-block p:last-child { margin-bottom: 0; }
+
+    .rules-highlight {
+      color: var(--star);
+      font-weight: 500;
+    }
+
+    .prize-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 8px;
+    }
+
+    .prize-label {
+      font-family: var(--font-head);
+      font-size: 0.45rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .prize-value {
+      font-size: 0.88rem;
+      color: var(--star);
+    }
+
+    /* REGISTER CTA */
+    .register-block {
+      background: var(--void-2);
+      border: 1px solid rgba(138,43,226,0.25);
+      padding: 36px;
+      text-align: center;
+    }
+
+    .register-heading {
+      font-family: var(--font-head);
+      font-size: 0.6rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--purple);
+      margin-bottom: 8px;
+    }
+
+    .register-sub {
+      font-size: 0.85rem;
+      color: var(--star-dim);
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .register-block iframe {
+      display: block;
+      border: none;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 0.7rem;
+      color: rgba(248,249,250,0.25);
+      font-family: var(--font-head);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    footer a { color: var(--purple); text-decoration: none; }
+
+    @media (max-width: 480px) {
+      nav { padding: 0 20px; }
+      main { padding-left: 16px; padding-right: 16px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .rules-block, .register-block { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Spaceboifresh</a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M7 2L3 6l4 4"/>
+      </svg>
+      Back
+    </a>
+  </nav>
+
+  <main>
+
+    <!-- Main Flyer -->
+    <div class="flyer-wrap">
+      <img
+        src="images/artist_competition_1.PNG.png"
+        alt="Got It Or Not It? DFW — Artist Competition & Mixer, April 24 2026, The NinesBar Dallas TX"
+      />
+    </div>
+
+    <!-- Event Info -->
+    <span class="event-label">Monthly Event &middot; Got It Or Not It? DFW</span>
+    <h1 class="event-title">Artist Competition<br>&amp; Mixer</h1>
+    <div class="event-divider"></div>
+
+    <div class="event-details">
+      <div class="event-detail-row">
+        <span class="event-detail-label">Date</span>
+        <span class="event-detail-value">Friday, April 24, 2026</span>
+      </div>
+      <div class="event-detail-row">
+        <span class="event-detail-label">Time</span>
+        <span class="event-detail-value">
+          7PM&ndash;10PM Sharp
+          <span class="sub">After Party 10PM&ndash;2AM</span>
+        </span>
+      </div>
+      <div class="event-detail-row">
+        <span class="event-detail-label">Venue</span>
+        <span class="event-detail-value">
+          The NinesBar
+          <span class="sub">2911 Main St. Dallas, TX</span>
+        </span>
+      </div>
+      <div class="event-detail-row">
+        <span class="event-detail-label">Presented</span>
+        <span class="event-detail-value">Spaceboifresh &amp; TH3-5TAR533D5 LLC.</span>
+      </div>
+    </div>
+
+    <div class="theme-badge">Theme: Dress Like Michael Jackson &mdash; Get In Free</div>
+
+    <hr class="section-break" />
+
+    <!-- Rules & Prize Images -->
+    <div class="info-grid">
+      <div class="info-img-wrap">
+        <img
+          src="images/artist_competition_2.PNG.png"
+          alt="Got It Or Not It? DFW Competition Rules"
+          loading="lazy"
+        />
+      </div>
+      <div class="info-img-wrap">
+        <img
+          src="images/artist_competition_3.PNG.png"
+          alt="Got It Or Not It? DFW — This Month's Prize: In Studio Interview with Spaceboifresh"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <!-- Rules Block -->
+    <div class="rules-block">
+      <p class="rules-heading">How It Works</p>
+      <p>
+        Talent gets tested live. Step up and <span class="rules-highlight">perform 30 seconds</span> of your song set — or go raw with an acapella (no beat). The crowd decides if you <span class="rules-highlight">Got It or Not It</span> by making noise on the meter.
+      </p>
+      <p>
+        Pass the test and you hit the stage for your <span class="rules-highlight">full song</span>. End of the night we crown a champ. Real feedback. Real energy. Real talent.
+      </p>
+      <div class="prize-row">
+        <span class="prize-label">This Month's Prize</span>
+        <span class="prize-value">In Studio Interview with Spaceboifresh</span>
+      </div>
+    </div>
+
+    <!-- Register CTA -->
+    <div class="register-block">
+      <p class="register-heading">Register Early</p>
+      <p class="register-sub">
+        List forms open at 7PM &mdash; arrive early to secure your spot on the lineup.
+      </p>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeWcRFwLcRZuIfHa97p2q_c28jQN9lsPMgvplHrNjRYjrWLFg/viewform?embedded=true"
+        width="100%"
+        height="700"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Got It Or Not It? Registration Form"
+      >Loading…</iframe>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="index.html">spaceboifresh.com</a>
+  </footer>
+
+</body>
+</html>
