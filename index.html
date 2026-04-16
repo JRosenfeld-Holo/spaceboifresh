@@ -9,6 +9,7 @@
   <meta property="og:description" content="Dallas hip-hop artist & 97.9 The Beat radio personality from Oak Cliff." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#050505" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -472,7 +473,7 @@
       padding: 28px;
       display: flex;
       gap: 20px;
-      align-items: flex-start;
+      align-items: stretch;
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
     }
@@ -504,7 +505,7 @@
       line-height: 1;
       margin-top: 4px;
     }
-    .event-body { flex: 1; min-width: 0; }
+    .event-body { flex: 1; min-width: 0; display: flex; flex-direction: column; }
     .event-tag {
       font-size: 0.55rem;
       letter-spacing: 0.3em;
@@ -533,7 +534,8 @@
     }
     .event-meta svg { width: 12px; height: 12px; color: var(--purple); flex-shrink: 0; }
     .event-rsvp {
-      margin-top: 16px;
+      margin-top: auto;
+      padding-top: 16px;
     }
 
     /* ─── RSVP MODAL ─────────────────────────────────────────────── */

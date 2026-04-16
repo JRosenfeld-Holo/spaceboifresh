@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#050505"/>
+  <!-- Orbit ring -->
+  <ellipse cx="16" cy="16" rx="13" ry="13" fill="none" stroke="#8A2BE2" stroke-width="1" opacity="0.5"/>
+  <!-- Small orbit dot -->
+  <circle cx="16" cy="3" r="1.5" fill="#FF4500"/>
+  <!-- S letterform -->
+  <text
+    x="16"
+    y="21.5"
+    font-family="'Syncopate', 'Arial Black', sans-serif"
+    font-size="16"
+    font-weight="700"
+    fill="#F8F9FA"
+    text-anchor="middle"
+    letter-spacing="-0.5"
+  >S</text>
+</svg>
