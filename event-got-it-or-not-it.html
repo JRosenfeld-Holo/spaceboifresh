@@ -442,43 +442,83 @@
       font-size: 1rem;
       color: var(--star-mid);
       line-height: 1.75;
-      margin-bottom: 44px;
+      margin-bottom: 32px;
       max-width: 480px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .submit-btn {
-      display: inline-block;
-      padding: 18px 56px;
-      background: var(--purple);
-      color: #fff;
-      font-family: var(--font-head);
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: opacity 0.2s ease, box-shadow 0.2s ease;
-      box-shadow: 0 0 32px rgba(138,43,226,0.35);
-    }
-    .submit-btn:hover {
-      opacity: 0.88;
-      box-shadow: 0 0 48px rgba(138,43,226,0.55);
-    }
-    .submit-btn:focus-visible {
-      outline: 2px solid var(--purple);
-      outline-offset: 4px;
+    /* ─── HUBSPOT FORM ──────────────────────────────────────── */
+    .hs-form-wrap {
+      background: #fff;
+      padding: 36px;
+      text-align: left;
+      margin-top: 8px;
     }
 
-    .cta-note {
-      display: block;
-      font-size: 0.8rem;
-      color: var(--star-dim);
-      margin-top: 20px;
-      letter-spacing: 0.04em;
+    .hs-form fieldset {
+      max-width: 100%;
+      border: none;
+      padding: 0;
     }
+    .hs-form .hs-form-field { margin-bottom: 18px; }
+    .hs-form label {
+      display: block;
+      font-family: 'Syncopate', sans-serif;
+      font-size: 0.45rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #111;
+      margin-bottom: 8px;
+      font-weight: 400;
+    }
+    .hs-form input[type="text"],
+    .hs-form input[type="email"],
+    .hs-form input[type="tel"],
+    .hs-form input[type="number"],
+    .hs-form textarea,
+    .hs-form select {
+      width: 100%;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 0;
+      color: #111;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      padding: 12px 16px;
+      outline: none;
+      box-shadow: none;
+      transition: border-color 0.2s ease;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .hs-form input:focus,
+    .hs-form textarea:focus,
+    .hs-form select:focus { border-color: #8A2BE2; }
+    .hs-form .actions { padding: 0; margin-top: 4px; }
+    .hs-form .hs-button {
+      width: 100%;
+      padding: 15px;
+      background: #8A2BE2;
+      border: none;
+      border-radius: 0;
+      color: #fff;
+      font-family: 'Syncopate', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+      box-shadow: none;
+    }
+    .hs-form .hs-button:hover { opacity: 0.82; }
+    .hs-form .hs-error-msgs { list-style: none; margin: 6px 0 0; padding: 0; }
+    .hs-form .hs-error-msg { color: #FF4500; font-size: 0.7rem; font-family: 'Inter', sans-serif; }
+    .hs-form .legal-consent-container,
+    .hs-form .hs-richtext { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #666; line-height: 1.55; }
+    .hs-form .legal-consent-container a { color: #8A2BE2; }
+    .hs-form .submitted-message { font-family: 'Inter', sans-serif; color: #111; font-size: 0.88rem; line-height: 1.65; padding: 8px 0; }
 
     /* ─── FOOTER ────────────────────────────────────────────── */
     footer {
@@ -658,15 +698,20 @@
       <p class="cta-body">
         List forms open at 7PM sharp. Arrive early to lock in your spot on the lineup. Free to enter &mdash; all you need is your voice.
       </p>
-      <a
-        href="https://docs.google.com/forms/d/e/1FAIpQLSeWcRFwLcRZuIfHa97p2q_c28jQN9lsPMgvplHrNjRYjrWLFg/viewform"
-        class="submit-btn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Submit Your Song
-      </a>
-      <span class="cta-note">Opens in a new tab &middot; Presented by Spaceboifresh &amp; TH3-5TAR533D5 LLC.</span>
+      <div class="hs-form-wrap">
+        <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+        <script>
+          hbspt.forms.create({
+            region: "na2",
+            portalId: "245772595",
+            formId: "febf5d45-ffb0-411a-ac5a-3401f5447f76",
+            target: "#hs-form-goini",
+            cssRequired: "",
+            css: ""
+          });
+        </script>
+        <div id="hs-form-goini"></div>
+      </div>
     </div>
   </div>
 
