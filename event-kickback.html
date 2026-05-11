@@ -13,42 +13,46 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --void:       #050505;
-      --void-2:     #0d0d0d;
-      --void-3:     #141414;
-      --glass:      rgba(255,255,255,0.04);
-      --star:       #F8F9FA;
-      --star-dim:   rgba(248,249,250,0.6);
-      --purple:     #8A2BE2;
-      --purple-dim: rgba(138,43,226,0.25);
-      --orange:     #FF4500;
-      --font-head:  'Syncopate', sans-serif;
-      --font-body:  'Inter', sans-serif;
-      --ease:       cubic-bezier(0.16,1,0.3,1);
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    :root {
+      --void:        #050505;
+      --void-2:      #0d0d0d;
+      --void-3:      #111111;
+      --void-4:      #181818;
+      --star:        #F8F9FA;
+      --star-mid:    rgba(248,249,250,0.82);
+      --star-dim:    rgba(248,249,250,0.5);
+      --purple:      #8A2BE2;
+      --orange:      #FF4500;
+      --font-head:   'Syncopate', sans-serif;
+      --font-body:   'Inter', sans-serif;
+      --ease:        cubic-bezier(0.16,1,0.3,1);
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
       background: var(--void);
       color: var(--star);
       font-family: var(--font-body);
-      line-height: 1.6;
+      line-height: 1.7;
       -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    /* NAV */
+    /* ─── NAV ───────────────────────────────────────────────── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
       height: 68px;
-      background: rgba(5,5,5,0.88);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: rgba(5,5,5,0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
       display: flex;
       align-items: center;
       padding: 0 32px;
@@ -57,9 +61,9 @@
 
     .nav-logo {
       font-family: var(--font-head);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
       color: var(--star);
       text-decoration: none;
@@ -67,8 +71,8 @@
 
     .nav-back {
       font-family: var(--font-head);
-      font-size: 0.5rem;
-      letter-spacing: 0.3em;
+      font-size: 0.48rem;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--star-dim);
       text-decoration: none;
@@ -76,240 +80,310 @@
       align-items: center;
       gap: 8px;
       transition: color 0.2s ease;
+      cursor: pointer;
     }
     .nav-back:hover { color: var(--star); }
-    .nav-back svg { width: 12px; height: 12px; }
+    .nav-back svg { width: 11px; height: 11px; flex-shrink: 0; }
 
-    /* MAIN */
-    main {
-      padding-top: 68px;
-      max-width: 560px;
-      margin: 0 auto;
-      padding-bottom: 80px;
-      padding-left: 24px;
-      padding-right: 24px;
+    /* ─── HERO ──────────────────────────────────────────────── */
+    .hero {
+      margin-top: 68px;
+      position: relative;
+      background: var(--void-2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 64px 24px 0;
     }
 
-    /* FLYER */
-    .flyer-wrap {
-      margin: 48px 0 40px;
-      border: 1px solid rgba(138,43,226,0.3);
-      box-shadow: 0 0 60px rgba(138,43,226,0.1);
+    .hero-glow-1 {
+      position: absolute;
+      top: -100px; left: -100px;
+      width: 560px; height: 560px;
+      background: radial-gradient(ellipse, rgba(138,43,226,0.16) 0%, transparent 65%);
+      pointer-events: none;
     }
 
-    .flyer-wrap img {
+    .hero-glow-2 {
+      position: absolute;
+      top: -40px; right: -80px;
+      width: 380px; height: 380px;
+      background: radial-gradient(ellipse, rgba(255,69,0,0.09) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-head);
+      font-size: 0.48rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 7vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--star);
+      line-height: 1.08;
+      text-align: center;
+      margin-bottom: 36px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-flyer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      border: 1px solid rgba(138,43,226,0.4);
+      box-shadow:
+        0 0 0 1px rgba(138,43,226,0.1),
+        0 24px 80px rgba(138,43,226,0.2),
+        0 0 120px rgba(138,43,226,0.08);
+    }
+
+    .hero-flyer img {
       width: 100%;
       height: auto;
       display: block;
     }
 
-    /* EVENT INFO */
-    .event-info {
-      margin-bottom: 40px;
+    /* ─── META STRIP ────────────────────────────────────────── */
+    .meta-strip {
+      background: var(--void-3);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .event-label {
+    .meta-strip-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .meta-item {
+      padding: 28px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      border-right: 1px solid rgba(255,255,255,0.05);
+    }
+    .meta-item:last-child { border-right: none; }
+    .meta-item:not(:first-child) { padding-left: 28px; }
+
+    .meta-label {
+      font-family: var(--font-head);
+      font-size: 0.42rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .meta-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--star);
+      line-height: 1.35;
+    }
+
+    .meta-sub {
+      font-size: 0.82rem;
+      color: var(--star-dim);
+    }
+
+    /* ─── THEME BANNER ──────────────────────────────────────── */
+    .theme-banner {
+      background: rgba(138,43,226,0.07);
+      border-top: 1px solid rgba(138,43,226,0.18);
+      border-bottom: 1px solid rgba(138,43,226,0.18);
+      padding: 16px 32px;
+      text-align: center;
+    }
+
+    .theme-banner p {
       font-family: var(--font-head);
       font-size: 0.5rem;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.35em;
       text-transform: uppercase;
-      color: var(--orange);
-      display: block;
-      margin-bottom: 12px;
+      color: var(--purple);
     }
 
-    .event-title {
+    /* ─── CTA BLOCK ─────────────────────────────────────────── */
+    .cta-section {
+      position: relative;
+      background: var(--void-2);
+      overflow: hidden;
+      border-top: 1px solid rgba(138,43,226,0.15);
+    }
+
+    .cta-glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(138,43,226,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 72px 32px 80px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .cta-eyebrow {
       font-family: var(--font-head);
-      font-size: clamp(1.2rem, 5vw, 2rem);
+      font-size: 0.48rem;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--purple);
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .cta-heading {
+      font-family: var(--font-head);
+      font-size: clamp(1.4rem, 5vw, 2.2rem);
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--star);
       line-height: 1.1;
-      margin-bottom: 20px;
+      margin-bottom: 14px;
     }
 
-    .event-divider {
+    .cta-divider {
       width: 40px;
-      height: 1px;
+      height: 2px;
       background: var(--purple);
-      margin-bottom: 20px;
+      margin: 0 auto 20px;
     }
 
-    .event-details {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .cta-body {
+      font-size: 0.95rem;
+      color: var(--star-mid);
+      line-height: 1.75;
+      margin-bottom: 36px;
     }
 
-    .event-detail-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-
-    .event-detail-label {
-      font-family: var(--font-head);
-      font-size: 0.45rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--purple);
-      min-width: 60px;
-      padding-top: 2px;
-    }
-
-    .event-detail-value {
-      color: var(--star);
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .event-detail-value .sub {
-      display: block;
-      color: var(--star-dim);
-      font-size: 0.78rem;
-    }
-
-    /* FORM */
-    .rsvp-section {
-      background: #fff;
-      border: 1px solid rgba(138,43,226,0.2);
-      padding: 36px;
-    }
-
-    .rsvp-heading {
-      font-family: var(--font-head);
-      font-size: 0.6rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--purple);
-      margin-bottom: 6px;
-    }
-
-    .rsvp-subheading {
-      font-size: 0.82rem;
-      color: #444;
-      margin-bottom: 28px;
-    }
-
-    /* ─── HUBSPOT FORM OVERRIDES ────────────────────────────── */
-    .hs-form fieldset {
-      max-width: 100%;
-      border: none;
-      padding: 0;
-    }
-    .hs-form .hs-form-field {
-      margin-bottom: 18px;
-    }
-    .hs-form label {
-      display: block;
-      font-family: 'Syncopate', sans-serif;
-      font-size: 0.45rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #F8F9FA;
-      margin-bottom: 8px;
-      font-weight: 400;
-    }
-    .hs-form input[type="text"],
-    .hs-form input[type="email"],
-    .hs-form input[type="tel"],
-    .hs-form input[type="number"],
-    .hs-form textarea,
-    .hs-form select {
-      width: 100%;
-      background: #141414;
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 0;
-      color: #F8F9FA;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      padding: 12px 16px;
-      outline: none;
-      box-shadow: none;
-      transition: border-color 0.2s ease;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .hs-form input[type="text"]:focus,
-    .hs-form input[type="email"]:focus,
-    .hs-form input[type="tel"]:focus,
-    .hs-form textarea:focus,
-    .hs-form select:focus {
-      border-color: #8A2BE2;
-    }
-    .hs-form input::placeholder,
-    .hs-form textarea::placeholder {
-      color: rgba(248,249,250,0.25);
-    }
-    .hs-form .actions {
-      padding: 0;
-      margin-top: 4px;
-    }
-    .hs-form .hs-button {
-      width: 100%;
-      padding: 15px;
-      background: #8A2BE2;
-      border: none;
-      border-radius: 0;
+    .rsvp-btn {
+      display: inline-block;
+      padding: 17px 52px;
+      background: var(--purple);
       color: #fff;
-      font-family: 'Syncopate', sans-serif;
-      font-size: 0.55rem;
+      font-family: var(--font-head);
+      font-size: 0.52rem;
       font-weight: 700;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
+      border: none;
       cursor: pointer;
       transition: opacity 0.2s ease;
-      box-shadow: none;
     }
-    .hs-form .hs-button:hover { opacity: 0.82; }
-    .hs-form .hs-error-msgs {
-      list-style: none;
-      margin: 6px 0 0;
+    .rsvp-btn:hover { opacity: 0.82; }
+
+    /* ─── DIALOG ────────────────────────────────────────────── */
+    dialog {
+      background: var(--void-2);
+      border: 1px solid rgba(138,43,226,0.3);
       padding: 0;
-    }
-    .hs-form .hs-error-msg {
-      color: #FF4500;
-      font-size: 0.7rem;
-      font-family: 'Inter', sans-serif;
-    }
-    .hs-form .legal-consent-container,
-    .hs-form .hs-richtext {
-      font-family: 'Inter', sans-serif;
-      font-size: 0.7rem;
-      color: rgba(248,249,250,0.35);
-      line-height: 1.55;
-    }
-    .hs-form .legal-consent-container a,
-    .hs-form .hs-richtext a { color: #8A2BE2; }
-    .hs-form .submitted-message {
-      font-family: 'Inter', sans-serif;
-      color: #F8F9FA;
-      font-size: 0.88rem;
-      line-height: 1.65;
-      padding: 8px 0;
+      max-width: 520px;
+      width: calc(100% - 48px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(138,43,226,0.12);
+      margin: auto;
     }
 
-    /* FOOTER */
+    dialog::backdrop {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .dialog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 28px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .dialog-title {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .dialog-close {
+      background: none;
+      border: none;
+      color: var(--star-dim);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease;
+    }
+    .dialog-close:hover { color: var(--star); }
+    .dialog-close svg { width: 18px; height: 18px; }
+
+    .dialog-body {
+      padding: 28px;
+    }
+
+    .dialog-sub {
+      font-size: 0.88rem;
+      color: var(--star-dim);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────── */
     footer {
       text-align: center;
-      padding: 40px 24px;
-      font-size: 0.7rem;
-      color: rgba(248,249,250,0.25);
+      padding: 48px 24px;
+      font-size: 0.65rem;
+      color: rgba(248,249,250,0.18);
       font-family: var(--font-head);
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
     }
-
     footer a {
-      color: var(--purple);
+      color: rgba(138,43,226,0.6);
       text-decoration: none;
+      transition: color 0.2s ease;
     }
+    footer a:hover { color: var(--purple); }
 
-    @media (max-width: 480px) {
+    /* ─── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 640px) {
       nav { padding: 0 20px; }
-      .rsvp-section { padding: 24px 20px; }
-      main { padding-left: 16px; padding-right: 16px; }
+      .hero { padding: 48px 20px 0; }
+      .meta-strip-inner {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+      .meta-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        padding: 20px 0;
+      }
+      .meta-item:last-child { border-bottom: none; }
+      .meta-item:not(:first-child) { padding-left: 0; }
+      .cta-inner { padding: 56px 20px 64px; }
+      .dialog-body { padding: 20px; }
     }
   </style>
 </head>
@@ -325,47 +399,78 @@
     </a>
   </nav>
 
-  <main>
-
-    <div class="flyer-wrap">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow-2" aria-hidden="true"></div>
+    <p class="hero-eyebrow">Spaceboifresh Presents</p>
+    <h1 class="hero-title">Kickback in<br>the Yard Again</h1>
+    <div class="hero-flyer">
       <img
         src="Kickback_In_The_Yard_Again_202605102021.jpeg"
-        alt="Kickback in the Yard Again — April 18 with Spaceboifresh, Kickback Edition 7PM–11PM"
+        alt="Kickback in the Yard Again — April 18, Kickback Edition, 7PM–11PM"
       />
     </div>
+  </div>
 
-    <div class="event-info">
-      <span class="event-label">Upcoming Event</span>
-      <h1 class="event-title">Kickback in the Yard Again</h1>
-      <div class="event-divider"></div>
-      <div class="event-details">
-        <div class="event-detail-row">
-          <span class="event-detail-label">Date</span>
-          <span class="event-detail-value">April 18, 2025</span>
-        </div>
-        <div class="event-detail-row">
-          <span class="event-detail-label">Time</span>
-          <span class="event-detail-value">7PM&ndash;11PM</span>
-        </div>
-        <div class="event-detail-row">
-          <span class="event-detail-label">Vibe</span>
-          <span class="event-detail-value">
-            Kickback Edition
-            <span class="sub">Good vibes, great people, good smoke.</span>
-          </span>
-        </div>
+  <!-- META STRIP -->
+  <div class="meta-strip">
+    <div class="meta-strip-inner">
+      <div class="meta-item">
+        <span class="meta-label">Date</span>
+        <span class="meta-value">Friday, April 18</span>
+        <span class="meta-sub">2025</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Time</span>
+        <span class="meta-value">7PM &ndash; 11PM</span>
+        <span class="meta-sub">Doors open at 7</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Vibe</span>
+        <span class="meta-value">Kickback Edition</span>
+        <span class="meta-sub">Good vibes. Great people.</span>
       </div>
     </div>
+  </div>
 
-    <div class="rsvp-section">
-      <p class="rsvp-heading">RSVP</p>
-      <p class="rsvp-subheading">Lock in your spot. We'll see you there.</p>
+  <!-- THEME BANNER -->
+  <div class="theme-banner">
+    <p>Good Vibes &middot; Great People &middot; Good Smoke</p>
+  </div>
 
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-glow" aria-hidden="true"></div>
+    <div class="cta-inner">
+      <span class="cta-eyebrow">Secure Your Spot</span>
+      <h2 class="cta-heading">You Coming?</h2>
+      <div class="cta-divider"></div>
+      <p class="cta-body">
+        It's free — just bring good energy. Let us know you're pulling up.
+      </p>
+      <button class="rsvp-btn" onclick="document.getElementById('rsvp-dialog').showModal()">
+        RSVP Now
+      </button>
+    </div>
+  </div>
+
+  <!-- RSVP DIALOG -->
+  <dialog id="rsvp-dialog" aria-label="RSVP for Kickback in the Yard">
+    <div class="dialog-header">
+      <span class="dialog-title">RSVP &mdash; Kickback in the Yard</span>
+      <button class="dialog-close" onclick="document.getElementById('rsvp-dialog').close()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p class="dialog-sub">Lock in your spot before we're at capacity.</p>
       <script src="https://js-na2.hsforms.net/forms/embed/245772595.js" defer></script>
       <div class="hs-form-frame" data-region="na2" data-form-id="674e1101-0f78-4e90-93c9-b4979e987fe4" data-portal-id="245772595"></div>
     </div>
-
-  </main>
+  </dialog>
 
   <footer>
     <a href="index.html">spaceboifresh.com</a>

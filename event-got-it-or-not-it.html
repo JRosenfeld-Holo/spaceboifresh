@@ -448,77 +448,81 @@
       margin-right: auto;
     }
 
-    /* ─── HUBSPOT FORM ──────────────────────────────────────── */
-    .hs-form-wrap {
-      background: #fff;
-      padding: 36px;
-      text-align: left;
-      margin-top: 8px;
-    }
-
-    .hs-form fieldset {
-      max-width: 100%;
-      border: none;
-      padding: 0;
-    }
-    .hs-form .hs-form-field { margin-bottom: 18px; }
-    .hs-form label {
-      display: block;
-      font-family: 'Syncopate', sans-serif;
-      font-size: 0.45rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #111;
-      margin-bottom: 8px;
-      font-weight: 400;
-    }
-    .hs-form input[type="text"],
-    .hs-form input[type="email"],
-    .hs-form input[type="tel"],
-    .hs-form input[type="number"],
-    .hs-form textarea,
-    .hs-form select {
-      width: 100%;
-      background: #f5f5f5;
-      border: 1px solid #ddd;
-      border-radius: 0;
-      color: #111;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      padding: 12px 16px;
-      outline: none;
-      box-shadow: none;
-      transition: border-color 0.2s ease;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-    .hs-form input:focus,
-    .hs-form textarea:focus,
-    .hs-form select:focus { border-color: #8A2BE2; }
-    .hs-form .actions { padding: 0; margin-top: 4px; }
-    .hs-form .hs-button {
-      width: 100%;
-      padding: 15px;
-      background: #8A2BE2;
-      border: none;
-      border-radius: 0;
+    /* ─── RSVP BUTTON ──────────────────────────────────────── */
+    .rsvp-btn {
+      display: inline-block;
+      padding: 17px 52px;
+      background: var(--purple);
       color: #fff;
-      font-family: 'Syncopate', sans-serif;
-      font-size: 0.55rem;
+      font-family: var(--font-head);
+      font-size: 0.52rem;
       font-weight: 700;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
+      border: none;
       cursor: pointer;
       transition: opacity 0.2s ease;
-      box-shadow: none;
     }
-    .hs-form .hs-button:hover { opacity: 0.82; }
-    .hs-form .hs-error-msgs { list-style: none; margin: 6px 0 0; padding: 0; }
-    .hs-form .hs-error-msg { color: #FF4500; font-size: 0.7rem; font-family: 'Inter', sans-serif; }
-    .hs-form .legal-consent-container,
-    .hs-form .hs-richtext { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #666; line-height: 1.55; }
-    .hs-form .legal-consent-container a { color: #8A2BE2; }
-    .hs-form .submitted-message { font-family: 'Inter', sans-serif; color: #111; font-size: 0.88rem; line-height: 1.65; padding: 8px 0; }
+    .rsvp-btn:hover { opacity: 0.82; }
+
+    /* ─── DIALOG ────────────────────────────────────────────── */
+    dialog {
+      background: var(--void-2);
+      border: 1px solid rgba(138,43,226,0.3);
+      padding: 0;
+      max-width: 520px;
+      width: calc(100% - 48px);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(138,43,226,0.12);
+      margin: auto;
+    }
+
+    dialog::backdrop {
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+
+    .dialog-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 28px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .dialog-title {
+      font-family: var(--font-head);
+      font-size: 0.5rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    .dialog-close {
+      background: none;
+      border: none;
+      color: var(--star-dim);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease;
+    }
+    .dialog-close:hover { color: var(--star); }
+    .dialog-close svg { width: 18px; height: 18px; }
+
+    .dialog-body {
+      padding: 28px;
+    }
+
+    .dialog-sub {
+      font-size: 0.88rem;
+      color: var(--star-dim);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .hs-form-frame { width: 100%; }
 
     /* ─── FOOTER ────────────────────────────────────────────── */
     footer {
@@ -562,7 +566,7 @@
       .step { gap: 18px; }
       .step-num { width: 36px; font-size: 1.8rem; }
       .cta-inner { padding: 64px 20px; }
-      .submit-btn { padding: 16px 36px; }
+      .dialog-body { padding: 20px; }
     }
   </style>
 </head>
@@ -698,10 +702,28 @@
       <p class="cta-body">
         List forms open at 7PM sharp. Arrive early to lock in your spot on the lineup. Free to enter &mdash; all you need is your voice.
       </p>
+      <button class="rsvp-btn" onclick="document.getElementById('rsvp-dialog').showModal()">
+        Submit Your RSVP
+      </button>
+    </div>
+  </div>
+
+  <!-- RSVP DIALOG -->
+  <dialog id="rsvp-dialog" aria-label="RSVP for Got It Or Not It?">
+    <div class="dialog-header">
+      <span class="dialog-title">RSVP &mdash; Got It Or Not It?</span>
+      <button class="dialog-close" onclick="document.getElementById('rsvp-dialog').close()" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div class="dialog-body">
+      <p class="dialog-sub">Lock in your spot on the lineup. Free to enter.</p>
       <script src="https://js-na2.hsforms.net/forms/embed/245772595.js" defer></script>
       <div class="hs-form-frame" data-region="na2" data-form-id="674e1101-0f78-4e90-93c9-b4979e987fe4" data-portal-id="245772595"></div>
     </div>
-  </div>
+  </dialog>
 
   <footer>
     <a href="index.html">spaceboifresh.com</a>
