@@ -2072,8 +2072,8 @@
            onclick="window.location.href='event-kickback.html'"
            onkeydown="if(event.key==='Enter'||event.key===' ')window.location.href='event-kickback.html'">
         <div class="event-date-badge">
-          <span class="month">Jun</span>
-          <span class="day">27</span>
+          <span class="month" id="kickback-badge-month">Jun</span>
+          <span class="day" id="kickback-badge-day">27</span>
         </div>
         <div class="event-body">
           <span class="event-tag">Kickback Edition</span>
@@ -2099,8 +2099,8 @@
            onclick="window.location.href='event-got-it-or-not-it.html'"
            onkeydown="if(event.key==='Enter'||event.key===' ')window.location.href='event-got-it-or-not-it.html'">
         <div class="event-date-badge">
-          <span class="month">Jun</span>
-          <span class="day">26</span>
+          <span class="month" id="goii-badge-month">Jun</span>
+          <span class="day" id="goii-badge-day">26</span>
         </div>
         <div class="event-body">
           <span class="event-tag">Monthly Competition &mdash; Artist Mixer</span>
@@ -2187,7 +2187,7 @@
           />
         </div>
         <div class="live-panel-event-info">
-          <span class="live-panel-tag">Jun 26 &middot; Artist Competition</span>
+          <span class="live-panel-tag" id="goii-panel-tag">Jun 26 &middot; Artist Competition</span>
           <h3 class="live-panel-title">Got It Or Not It? DFW</h3>
           <div class="live-panel-divider"></div>
           <p class="live-panel-desc">
@@ -2208,7 +2208,7 @@
           />
         </div>
         <div class="live-panel-event-info">
-          <span class="live-panel-tag">Jun 27 &middot; Kickback Edition</span>
+          <span class="live-panel-tag" id="kickback-panel-tag">Jun 27 &middot; Kickback Edition</span>
           <h3 class="live-panel-title">Kickback in the Yard</h3>
           <div class="live-panel-divider"></div>
           <p class="live-panel-desc">
@@ -2974,6 +2974,26 @@
     scrambleObserver.observe(el);
   });
 
+})();
+</script>
+
+<script>
+(function () {
+  function lastWeekday(year, month, dow) {
+    var d = new Date(year, month + 1, 0);
+    d.setDate(d.getDate() - (d.getDay() - dow + 7) % 7);
+    return d;
+  }
+  var mo = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var now = new Date(), y = now.getFullYear(), m = now.getMonth();
+  var fri = lastWeekday(y, m, 5);
+  var sat = lastWeekday(y, m, 6);
+  document.getElementById('goii-badge-month').textContent = mo[fri.getMonth()];
+  document.getElementById('goii-badge-day').textContent = fri.getDate();
+  document.getElementById('goii-panel-tag').innerHTML = mo[fri.getMonth()] + ' ' + fri.getDate() + ' · Artist Competition';
+  document.getElementById('kickback-badge-month').textContent = mo[sat.getMonth()];
+  document.getElementById('kickback-badge-day').textContent = sat.getDate();
+  document.getElementById('kickback-panel-tag').innerHTML = mo[sat.getMonth()] + ' ' + sat.getDate() + ' · Kickback Edition';
 })();
 </script>
 

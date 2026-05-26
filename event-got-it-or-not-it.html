@@ -585,8 +585,8 @@
     <div class="meta-strip-inner">
       <div class="meta-item">
         <span class="meta-label">Date</span>
-        <span class="meta-value">Friday, June 26</span>
-        <span class="meta-sub">2026</span>
+        <span class="meta-value" id="event-date-value">Friday, June 26</span>
+        <span class="meta-sub" id="event-date-year">2026</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Time</span>
@@ -706,6 +706,20 @@
   <footer>
     <a href="index.html">spaceboifresh.com</a>
   </footer>
+
+<script>
+(function () {
+  function lastWeekday(year, month, dow) {
+    var d = new Date(year, month + 1, 0);
+    d.setDate(d.getDate() - (d.getDay() - dow + 7) % 7);
+    return d;
+  }
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var d = lastWeekday(new Date().getFullYear(), new Date().getMonth(), 5);
+  document.getElementById('event-date-value').textContent = 'Friday, ' + months[d.getMonth()] + ' ' + d.getDate();
+  document.getElementById('event-date-year').textContent = d.getFullYear();
+})();
+</script>
 
 </body>
 </html>
