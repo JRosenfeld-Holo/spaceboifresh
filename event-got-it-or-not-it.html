@@ -457,10 +457,13 @@
       max-width: 520px;
       width: calc(100% - 48px);
       max-height: 90vh;
-      display: flex;
-      flex-direction: column;
       box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 60px rgba(138,43,226,0.12);
       margin: auto;
+    }
+
+    dialog[open] {
+      display: flex;
+      flex-direction: column;
     }
 
     dialog::backdrop {
