@@ -511,8 +511,24 @@
       font-size: 0.88rem;
       color: #666;
       line-height: 1.65;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
     }
+
+    .dialog-notice {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      background: rgba(255,69,0,0.08);
+      border: 1px solid rgba(255,69,0,0.35);
+      border-radius: 6px;
+      padding: 12px 14px;
+      margin-bottom: 24px;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: #b3360a;
+    }
+    .dialog-notice svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+    .dialog-notice strong { color: #8a2a06; }
 
     .hs-form-frame { width: 100%; }
 
@@ -559,6 +575,16 @@
       .step-num { width: 36px; font-size: 1.8rem; }
       .cta-inner { padding: 64px 20px; }
       .dialog-body { padding: 20px; }
+
+      /* Full-screen RSVP form on mobile so nothing hides off-screen */
+      dialog {
+        width: 100%;
+        max-width: 100%;
+        height: 100dvh;
+        max-height: 100dvh;
+        margin: 0;
+        border: none;
+      }
     }
   </style>
 </head>
@@ -714,6 +740,12 @@
     </div>
     <div class="dialog-body">
       <p class="dialog-sub">Lock in your spot on the lineup. Free to enter.</p>
+      <div class="dialog-notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+        </svg>
+        <span><strong>You must upload your song to enter.</strong> Scroll down and add your track in the &ldquo;Upload Your Song&rdquo; field before hitting submit.</span>
+      </div>
       <div class="hs-form-frame" data-region="na2" data-form-id="674e1101-0f78-4e90-93c9-b4979e987fe4" data-portal-id="245772595"></div>
     </div>
   </dialog>
